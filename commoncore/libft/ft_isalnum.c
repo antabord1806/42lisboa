@@ -15,11 +15,11 @@
 
 int ft_isalnum(int c)
 {
-    return (ft_isalpha() || ft_isdigit());
+    return (ft_isalpha(c) || ft_isdigit(c));
 }
 
 int main(void)
 {
-    printf("%d", ft_isalnum(49));
+    printf("%d", ft_isalnum(56));
     return (0);
 }

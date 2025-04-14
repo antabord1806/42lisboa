@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-14 11:36:50 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-14 11:36:50 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-14 12:39:56 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-14 12:39:56 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 #include <stdio.h>
 #include <string.h>
 
-int ft_strlen(char *str)
+
+void    *ft_memset(void *s, int c, size_t n)
 {
-    int l;
+    unsigned char *p = (unsigned char *) s;
 
-    l = 0;
-    while (str[l])
+    if (s == NULL)
+        return NULL;
+    size_t i = 0;
+    while (i < n)
     {
-        l++;
+        p[i] = (unsigned char)c;
+        i++;
     }
-    return (l);
+    return s;
 }
-
 int main(void)
 {
     char str1[] = "ola mundo";
     char str2[] = "ola mundo";
-    strlen(str1);
-    ft_strlen(str2);
-    printf("%d\n", strlen(str1));
-    printf("%d", ft_strlen(str2));
-    return (0);
+    ft_memset(str1, 'a', 5);
+    memset(str2, 'a', 5);
+    printf("%s\n", str1);
+    printf("%s", str2);
+    return 0;
 }

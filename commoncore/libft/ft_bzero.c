@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-14 11:36:50 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-14 11:36:50 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-14 14:47:54 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-14 14:47:54 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+  
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
-int ft_strlen(char *str)
+void    ft_bzero(void *s, size_t n)
 {
-    int l;
+    unsigned char *ptr;
 
-    l = 0;
-    while (str[l])
-    {
-        l++;
-    }
-    return (l);
+    ptr = (unsigned char *)s;
+    while (n--)
+        *ptr++ = '\0';
 }
 
-int main(void)
+/*int main(void)
 {
-    char str1[] = "ola mundo";
-    char str2[] = "ola mundo";
-    strlen(str1);
-    ft_strlen(str2);
-    printf("%d\n", strlen(str1));
-    printf("%d", ft_strlen(str2));
+    char str1[] = "1234";
+    char str2[] = "1234";
+    ft_bzero(str1, 3);
+    bzero(str2, 3);
+    printf("%s\n", str1);
+    printf("%s", str2);
     return (0);
-}
+}*/
