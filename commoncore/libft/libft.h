@@ -15,7 +15,10 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
 
-int ft_isalpha(int)
+int ft_isalpha(int c)
+int ft_isdigit(int c)
+int ft_isalnum(int c)
 
 #endif
