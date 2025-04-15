@@ -33,7 +33,7 @@ size_t  ft_strlcat(char *dst, const char *src, size_t size)
         return (dslen + srclen);
 }
 
-int main(void)
+/*int main(void)
 {
     char src[] = "ola tudo bem";
     char dest1[] = "123456789101112";
@@ -43,4 +43,4 @@ int main(void)
     printf("%s\n", dest1);
     printf("%s\n", dest2);
     return (0);
-}
+}*/
