@@ -18,12 +18,16 @@
 #include <ctype.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 int ft_isalpha(int c);
 int ft_isdigit(int c);
 int ft_isalnum(int c);
 int ft_isprint(int c);
-int ft_strlen(char *str);
+int ft_strlen(const char *str);
 void    ft_memset(void *s, int c, size_t n);
+size_t  ft_strlcpy(char *dst, const char *src, size_t size);
+size_t  ft_strlcat(char *dst, const char *src, size_t size);
+
 
 #endif

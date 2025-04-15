@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int ft_strlen(char *str)
+int ft_strlen(const char *str)
 {
     int l;
 
@@ -26,7 +26,7 @@ int ft_strlen(char *str)
     return (l);
 }
 
-int main(void)
+/*int main(void)
 {
     char str1[] = "ola mundo";
     char str2[] = "ola mundo";
@@ -35,4 +35,4 @@ int main(void)
     printf("%d\n", strlen(str1));
     printf("%d", ft_strlen(str2));
     return (0);
-}
+}*/
