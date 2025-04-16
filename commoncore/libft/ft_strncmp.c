@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-14 11:09:53 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-14 11:09:53 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-16 13:48:56 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-16 13:48:56 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int ft_isdigit(int c)
+int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        if (s1[i] != s2[i])
+            break;
+        i++;
+    }
+    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 /*int main(void)
 {
-    printf("%d", ft_isdigit(50));
-    return (0);
+    char s1[] = "ola bom dia";
+    char s2[] = "olb boa tarde";
+    size_t n = 8;
+    printf("%d\n",ft_strncmp(s1, s2, n));
+    printf("%d\n", strncmp(s1, s2, n));
+    return 0;
 }*/

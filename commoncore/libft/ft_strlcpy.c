@@ -31,7 +31,7 @@ size_t    ft_strlcpy(char *dst, const char *src, size_t size)
     return (ft_strlen(src));
 }
 
-int main(void)
+/*int main(void)
 {
     char src[] = "ola tudo bem";
     char dest1[] = "123456789101112";
@@ -41,4 +41,4 @@ int main(void)
     printf("%s\n", dest1);
     printf("%s\n", dest2);
     return (0);
-}
+}*/

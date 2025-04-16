@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-14 11:09:53 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-14 11:09:53 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-16 10:46:55 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-16 10:46:55 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int ft_isdigit(int c)
+char    *ft_strchr(const char *s, int c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+    int i;
+    while (*s)
+    {
+        if (*s == (char)c)
+            return (char *)s;
+        s++;
+    }
+    if (*s == '\0')
+        return (char *)s;
 }
 
 /*int main(void)
 {
-    printf("%d", ft_isdigit(50));
-    return (0);
+    const char  s[] = "ola tudo bem";
+    int c = 'b';
+    char *res1 = ft_strchr(s, c);
+    char *res2 = strchr(s, c);
+    printf("%s\n", res1);
+    printf("%s\n", res2);
+    return 0;
 }*/
