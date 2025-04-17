@@ -12,35 +12,37 @@
 
 #include "libft.h"
 
-size_t  ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-    size_t i;
-    size_t dslen = ft_strlen(dst);
-    size_t srclen = ft_strlen(src);
+	size_t	i;
+	size_t	dslen;
+	size_t	srclen;
 
-    i = 0;
-    if (!src || !dst)
-        return 0;
-    if (dslen >= size)
-        return (srclen + size);
-    else
-        while (src[i] && (dslen + i) <= (size - 1))
-        {
-            dst[dslen + i] = src[i];
-            i++;
-        }
-        dst[dslen + i] = '\0';
-        return (dslen + srclen);
+	dslen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	i = 0;
+	if (!src || !dst)
+		return (0);
+	if (dslen >= size)
+		return (srclen + size);
+	else
+		while (src[i] && (dslen + i) <= (size - 1))
+		{
+			dst[dslen + i] = src[i];
+			i++;
+		}
+	dst[dslen + i] = '\0';
+	return (dslen + srclen);
 }
 
 /*int main(void)
 {
-    char src[] = "ola tudo bem";
-    char dest1[] = "123456789101112";
-    char dest2[] = "123456789101112";
-    ft_strlcat(dest1, src, 4);
-    strlcat(dest2, src, 4);
-    printf("%s\n", dest1);
-    printf("%s\n", dest2);
-    return (0);
+	char src[] = "ola tudo bem";
+	char dest1[] = "123456789101112";
+	char dest2[] = "123456789101112";
+	ft_strlcat(dest1, src, 4);
+	strlcat(dest2, src, 4);
+	printf("%s\n", dest1);
+	printf("%s\n", dest2);
+	return (0);
 }*/
