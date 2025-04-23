@@ -12,21 +12,21 @@
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    int a;
+	int	a;
 
-    if (c >= 'A' && c <= 'Z')
-    {
-        a = c + 32;
-        return a;
-    }
-    else
-        return c;
+	if (c >= 'A' && c <= 'Z')
+	{
+		a = c + 32;
+		return (a);
+	}
+	else
+		return (c);
 }
 
 /*int main(void)
 {
-    printf("%d\n", ft_tolower('a'));
-    printf("%d\n", tolower('a'));
+	printf("%d\n", ft_tolower('a'));
+	printf("%d\n", tolower('a'));
 }*/

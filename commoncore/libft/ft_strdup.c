@@ -12,39 +12,40 @@
 
 #include "libft.h"
 
-char    *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
-    unsigned char *p;
-    size_t i;
+	unsigned char	*p;
+	size_t			i;
+	unsigned char	*str;
 
-    unsigned char *str = (unsigned char *)s;
-    i = 0;
-    if (s == NULL)
-    { 
-        printf("string is empty");
-        return NULL;
-    }
-    p = malloc((ft_strlen((const char *)str) + 1) * sizeof(char));
-    while (i < (size_t)ft_strlen((const char *)str))
-    {
-        p[i] = (unsigned char )str[i];
-        i++;
-    }
-    p[i] = '\0';
-    return (char *)p;
+	str = (unsigned char *)s;
+	i = 0;
+	if (s == NULL)
+	{
+		printf("string is empty");
+		return (NULL);
+	}
+	p = malloc((ft_strlen((const char *)str) + 1) * sizeof(char));
+	while (i < (size_t)ft_strlen((const char *)str))
+	{
+		p[i] = (unsigned char)str[i];
+		i++;
+	}
+	p[i] = '\0';
+	return ((char *)p);
 }
 /*int main(void)
 {
-    char *p;
-    int i;
-    i = 0;
-    p = (char *)ft_strdup("");
-    while (i < ft_strlen(p))
-    {
-        printf("%c", p[i]);
-        i++;
-    }
-    printf("\n");
-    free(p);
-    return (0);
+	char *p;
+	int i;
+	i = 0;
+	p = (char *)ft_strdup("");
+	while (i < ft_strlen(p))
+	{
+		printf("%c", p[i]);
+		i++;
+	}
+	printf("\n");
+	free(p);
+	return (0);
 }*/

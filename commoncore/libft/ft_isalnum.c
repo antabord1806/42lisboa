@@ -13,13 +13,13 @@
 #include "libft.h"
 #include <stdio.h>
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    return (ft_isalpha(c) || ft_isdigit(c));
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
 
 /*int main(void)
 {
-    printf("%d", ft_isalnum(56));
-    return (0);
+	printf("%d", ft_isalnum(56));
+	return (0);
 }*/

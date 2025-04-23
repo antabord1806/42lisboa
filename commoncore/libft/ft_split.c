@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putend1_fd                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-23 10:52:05 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-23 10:52:05 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-23 14:52:10 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-23 14:52:10 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putend1_fd(char *s, int fd)
+char	**ft_split(char const *s, char c)
 {
-	if (!s)
-		return ;
-	while (*s)
+	int	i;
+	int j;
+	int len;
+	int	count;
+	char	**str;
+	char	**sub;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (s[i])
 	{
-		write(fd, s, 1);
-		s++;
+		if (s[i] == c)
+		{
+			len = i - j;
+			sub[count] = ft_substr((char *)s, i, len);
+			str[count] = ft_strdup(sub[count]);
+			count++;
+			j = i;
+		}
+		i++;
 	}
-	write(fd, "\n", 1);
+	return (0);
 }
 
 int	main(void)
 {
-	ft_putend1_fd("ola tudo bem", 1);
+	printf("%s\n", ft_split("ola,boa,tarde", ','));
 	return (0);
 }

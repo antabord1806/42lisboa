@@ -14,13 +14,13 @@
 
 int	ft_atoi(const char *s)
 {
-	int res;
-	int sig;
-	int i;
+	int	res;
+	int	sig;
+	int	i;
 
-    i = 0;
-    sig = 1;
-    res = 0;
+	i = 0;
+	sig = 1;
+	res = 0;
 	if ((s[i] >= 9 && s[i] <= 13) || (s[i] == 32))
 		i++;
 	if (s[i] == '+' || s[i] == '-')
@@ -32,16 +32,16 @@ int	ft_atoi(const char *s)
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		res = (res * 10) + s[i] - '0';
-        i++;
+		i++;
 	}
 	return (sig * res);
 }
 /*int main(void)
 {
-    char  s[] = "-16125h";
-    int res1 = ft_atoi(s);
-    //int res2 = atoi(s);
-    printf("%d\n", res1);
+	char  s[] = "-16125h";
+	int res1 = ft_atoi(s);
+	//int res2 = atoi(s);
+	printf("%d\n", res1);
    // printf("%s\n", res2);
-    return 0;
+	return (0);
 }*/

@@ -12,34 +12,34 @@
 
 #include "libft.h"
 
-char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    char    *newstr;
-    int len;
-    int i;
+	char	*newstr;
+	int		len;
+	int		i;
 
-    i = 0;
-    if (!s || !f)
-        return NULL;
-    len = ft_strlen(s);
-    newstr = malloc((len + 1) * sizeof(char));
-    while (i < len)
-    {
-        newstr[i] = f(i, s[i]);
-        i++;
-    }
-    return (newstr);
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	newstr = malloc((len + 1) * sizeof(char));
+	while (i < len)
+	{
+		newstr[i] = f(i, s[i]);
+		i++;
+	}
+	return (newstr);
 }
 
 /*char    ft_uppercase(unsigned int i, char c)
 {
-    if(i > 3)
-        return c - 48;
-    return c;
+	if(i > 3)
+		return (c - 48);
+	return (c);
 }
 
-int main(void)
+int	main(void)
 {
-    printf("%s\n", ft_strmapi("ola tudo bem", ft_uppercase));
-    return 0;
+	printf("%s\n", ft_strmapi("ola tudo bem", ft_uppercase));
+	return (0);
 }*/

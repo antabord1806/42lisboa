@@ -12,27 +12,27 @@
 
 #include "libft.h"
 
-void *ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    unsigned char *p = (unsigned char *) s;
+	unsigned char	*p;
 
-    if (s == NULL)
-        return NULL;
-
-    while (n--)
-    {
-        *p = (unsigned char)c;
-        p++;
-    }
-    return s;
+	p = (unsigned char *)s;
+	if (!s)
+		return (NULL);
+	while (n--)
+	{
+		*p = (unsigned char)c;
+		p++;
+	}
+	return (s);
 }
 /*int main(void)
 {
-    char str1[] = "ola mundo";
-    char str2[] = "ola mundo";
-    ft_memset(str1, 'a', 5);
-    memset(str2, 'a', 5);
-    printf("%s\n", str1);
-    printf("%s", str2);
-    return 0;
+	char str1[] = "";
+	char str2[] = "";
+	ft_memset(str1, 'a', 5);
+	memset(str2, 'a', 5);
+	printf("%s\n", str1);
+	printf("%s", str2);
+	return (0);
 }*/
