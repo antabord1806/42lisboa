@@ -11,28 +11,26 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
-int ft_strlen(const char *str)
+int	ft_strlen(const char *str)
 {
-    int l;
+	int	l;
 
-    l = 0;
-    while (str[l])
-    {
-        l++;
-    }
-    return (l);
+	l = 0;
+	while (str[l])
+	{
+		l++;
+	}
+	return (l);
 }
 
-/*int main(void)
+/*int	main(void)
 {
-    char str1[] = "ola mundo";
-    char str2[] = "ola mundo";
-    strlen(str1);
-    ft_strlen(str2);
-    printf("%d\n", strlen(str1));
-    printf("%d", ft_strlen(str2));
-    return (0);
+	char str1[] = "ola mundo";
+	char str2[] = "ola mundo";
+	strlen(str1);
+	ft_strlen(str2);
+	printf("%d\n", strlen(str1));
+	printf("%d", ft_strlen(str2));
+	return (0);
 }*/

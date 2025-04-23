@@ -4,6 +4,7 @@
     "files.associations": {
         "libft.h": "c",
         "random": "c",
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "ft_putchar_fd": "c"
     }
 }

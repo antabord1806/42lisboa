@@ -12,30 +12,30 @@
 
 #include "libft.h"
 
-void    ft_striteri(char const *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char const *s, void (*f)(unsigned int, char *))
 {
-    unsigned int i;
+	unsigned int	i;
 
-    i = 0;
-    if (!s || !f)
-        return;
-    while (s[i])
-    {
-        f(i, (char *)&s[i]);
-        i++;
-    }
+	i = 0;
+	if (!s || !f)
+		return;
+	while (s[i])
+	{
+		f(i, (char *)&s[i]);
+		i++;
+	}
 }
 
-void    ft_uppercase(unsigned int i, char *c)
+/*void    ft_uppercase(unsigned int i, char *c)
 {
-    if(i > 3 && *c >= 'a' && *c <= 'z')
-        *c = *c - 32;
+	if(i > 3 && *c >= 'a' && *c <= 'z')
+		*c = *c - 32;
 }
 
-int main(void)
+int	main(void)
 {
-    char str[] = "ola tudo bem";
-    ft_striteri(str, ft_uppercase);
-    printf("%s\n", str);
-    return 0;
-}
+	char str[] = "ola tudo bem";
+	ft_striteri(str, ft_uppercase);
+	printf("%s\n", str);
+	return (0);
+}*/

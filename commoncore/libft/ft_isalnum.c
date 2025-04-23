@@ -18,8 +18,8 @@ int ft_isalnum(int c)
     return (ft_isalpha(c) || ft_isdigit(c));
 }
 
-int main(void)
+/*int main(void)
 {
     printf("%d", ft_isalnum(56));
     return (0);
-}
+}*/
