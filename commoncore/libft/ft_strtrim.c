@@ -12,44 +12,45 @@
 
 #include "libft.h"
 
-char    *ft_strcheck(char c, char const *set)
+int    ft_strcheck(char s1, char *set)
 {
-    while (*set)
-        if (c == *set)
-            return 1;
-        return 0;
+    int i;
+
+    i = 0;
+    while (set[i])
+    {
+        if (s1 == set[i])
+            return (1);
+        i++;
+    }
+ return (0);
 }
 
-char    *ft_strtrim(const char *s1, const char *set)
+char    *ft_strtrim(char const *s1, char const *set)
 {
+    char *new_str;
     int start;
     int end;
-    int i;
-    char *new_string;
 
-    i = 0;
-    stert = 0;
-    if (!s1)
+    start = 0;
+    end = ft_strlen(s1) - 1;
+    if (!s1 || !set)
         return NULL;
-    if (!set)
-        return (unsigned char *)s1;
-    while (s1[start])
+    while (s1[start] && ft_strcheck(s1[start], (char *)set))
     {
-        ft_strcheck(s1[i], set)
         start++;
     }
-    end = ft_strlen(s1) - 1;
-    i = 0;
-    while (start <= end)
+    while (start < end && ft_strcheck(s1[end], (char *)set))
     {
-        ft_strcheck()
+        end--;
     }
-    
+    new_str = ft_substr(s1, start, start - end + 1);
+    return new_str;
 }
 
 int	main(void)
 {
-	char s1[] = "ola tudo bem";
+	char s1[] = "     ola tudo bem     ";
 	char set[] = "ob m";
 	printf("%s\n", ft_strtrim(s1, set));
 	return 0;

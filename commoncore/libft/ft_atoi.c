@@ -21,7 +21,7 @@ int	ft_atoi(const char *s)
     i = 0;
     sig = 1;
     res = 0;
-	if (s[i] >= 9 && s[i] <= 13 || s[i] == 32)
+	if ((s[i] >= 9 && s[i] <= 13) || (s[i] == 32))
 		i++;
 	if (s[i] == '+' || s[i] == '-')
 	{

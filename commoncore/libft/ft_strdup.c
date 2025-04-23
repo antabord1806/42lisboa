@@ -25,13 +25,13 @@ char    *ft_strdup(const char *s)
         return NULL;
     }
     p = malloc((ft_strlen((const char *)str) + 1) * sizeof(char));
-    while (i < ft_strlen((const char *)str))
+    while (i < (size_t)ft_strlen((const char *)str))
     {
         p[i] = (unsigned char )str[i];
         i++;
     }
     p[i] = '\0';
-    return p;
+    return (char *)p;
 }
 /*int main(void)
 {
