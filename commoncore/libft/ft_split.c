@@ -12,35 +12,68 @@
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
+static int	ft_word_counter(char const *s, char c)
 {
 	int	i;
-	int j;
-	int len;
-	int	count;
-	char	**str;
-	char	**sub;
+	int	j;
 
 	i = 0;
 	j = 0;
-	count = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			j++;
+		i++;
+	}
+	return (j + 1); // nr palavras
+}
+static int	*ft_word_len(char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		len;
+	int		*str;
+
+	i = 0;
+	j = 0;
+	len = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
 			len = i - j;
-			sub[count] = ft_substr((char *)s, i, len);
-			str[count] = ft_strdup(sub[count]);
-			count++;
+			str[i] = len;
 			j = i;
 		}
 		i++;
 	}
-	return (0);
+	return str;//array de comprimentos
 }
-
-int	main(void)
+static char	**ft_str_aloc(char const *s, char c)
 {
-	printf("%s\n", ft_split("ola,boa,tarde", ','));
-	return (0);
+	int		i;
+	int		col;
+	int		*line;
+	char	**new_str;
+
+	new_str = malloc(sizeof(char **) * (col + 1));
+	i = 0;
+	*line = ft_word_len(s, c);
+	col = ft_word_counter(s, c);
+	while (i < col)
+	{
+		new_str[i] = malloc(sizeof(char *) * line[i]);
+	}
 }
+char	**ft_split(char const *s, char c)
+{
+	int i;
+	int wr_len;
+	int wr_counter = ft_word_counter(s, c);
+	char **new_str;
+
+	int main(void)
+	{
+		printf("%s\n", ft_split("ola,boa,tarde", ','));
+		return (0);
+	}
