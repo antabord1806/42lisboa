@@ -24,8 +24,8 @@ void	ft_putend1_fd(char *s, int fd)
 	write(fd, "\n", 1);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	ft_putend1_fd("ola tudo bem", 1);
 	return (0);
-}
+}*/

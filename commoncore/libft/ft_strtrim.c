@@ -47,11 +47,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (new_str);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	s1[] = "     ola tudo bem     ";
 	char	set[] = "ob m";
 
 	printf("%s\n", ft_strtrim(s1, set));
 	return (0);
-}
+}*/

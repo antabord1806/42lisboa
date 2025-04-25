@@ -12,36 +12,42 @@
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	size_t	dst_len;
+	size_t	src_len;
 	size_t	i;
-	size_t	dslen;
-	size_t	srclen;
 
-	dslen = ft_strlen(dst);
-	srclen = ft_strlen(src);
+	dst_len = 0;
+	src_len = ft_strlen(src);
+	// Encontra o tamanho atual de dst
+	while (dst[dst_len] && dst_len < dstsize)
+		dst_len++;
+	// Se dst_len >= dstsize, não há espaço para copiar nada
+	if (dst_len == dstsize)
+		return (dstsize + src_len);
+	// Copia os caracteres de src para dst (sem ultrapassar dstsize - 1)
 	i = 0;
-	if (!src || !dst)
-		return (0);
-	if (dslen >= size)
-		return (srclen + size);
-	else
-		while (src[i] && (dslen + i) <= (size - 1))
-		{
-			dst[dslen + i] = src[i];
-			i++;
-		}
-	dst[dslen + i] = '\0';
-	return (dslen + srclen);
+	while (src[i] && (dst_len + i + 1) < dstsize)
+	{
+		dst[dst_len + i] = src[i];
+		i++;
+	}
+	// Finaliza com '\0' se couber
+	if (dst_len + i < dstsize)
+		dst[dst_len + i] = '\0';
+	// Retorna o tamanho total que teria sido criado
+	return (dst_len + src_len);
 }
 
-/*int main(void)
+/*int	main(void)
 {
-	char src[] = "ola tudo bem";
-	char dest1[] = "123456789101112";
-	char dest2[] = "123456789101112";
-	ft_strlcat(dest1, src, 4);
-	strlcat(dest2, src, 4);
+	char	src[] = "123456790089898889";
+	char	dest1[] = "ola tudo bem";
+	char	dest2[] = "ola tudo bem";
+
+	ft_strlcat(dest1, src, 0);
+	strlcat(dest2, src, 0);
 	printf("%s\n", dest1);
 	printf("%s\n", dest2);
 	return (0);

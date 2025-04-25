@@ -12,68 +12,95 @@
 
 #include "libft.h"
 
-static int	ft_word_counter(char const *s, char c)
+static void	ft_free_all(char **arr_aloc)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (s[i])
+	while (arr_aloc[i])
 	{
-		if (s[i] == c)
-			j++;
+		free(arr_aloc[i]);
 		i++;
 	}
-	return (j + 1); // nr palavras
+	free(arr_aloc);
 }
-static int	*ft_word_len(char const *s, char c)
+static size_t	ft_count_words(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		len;
-	int		*str;
+	int	i;
 
 	i = 0;
-	j = 0;
-	len = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == c)
+		while (*s == c)
+			s++;
+		if (*s != c && *s)
+			i++;
+		while (*s != c && *s)
+			s++;
+	}
+	return (i);
+}
+
+static int	ft_str_fill(char **arr_aloc, char const *s, char c)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		len = 0;
+		while (*s == c && *s)
+			s++;
+		while (*s != c && *s)
 		{
-			len = i - j;
-			str[i] = len;
-			j = i;
+			len++;
+			s++;
+		}
+		if (len > 0)
+		{
+			arr_aloc[i] = malloc((len + 1) * sizeof(char));
+			if (!arr_aloc[i])
+			{
+				ft_free_all(arr_aloc);
+				return (0);
+			}
+			ft_strlcpy(arr_aloc[i], s - len, len + 1);
 		}
 		i++;
 	}
-	return str;//array de comprimentos
+	return (0);
 }
-static char	**ft_str_aloc(char const *s, char c)
-{
-	int		i;
-	int		col;
-	int		*line;
-	char	**new_str;
 
-	new_str = malloc(sizeof(char **) * (col + 1));
-	i = 0;
-	*line = ft_word_len(s, c);
-	col = ft_word_counter(s, c);
-	while (i < col)
-	{
-		new_str[i] = malloc(sizeof(char *) * line[i]);
-	}
-}
 char	**ft_split(char const *s, char c)
 {
-	int i;
-	int wr_len;
-	int wr_counter = ft_word_counter(s, c);
-	char **new_str;
+	size_t	nwords;
+	char	**arr_aloc;
 
-	int main(void)
+	if (!s)
+		return (NULL);
+	nwords = ft_count_words(s, c);
+	arr_aloc = malloc((nwords + 1) * sizeof(char *));
+	if (!arr_aloc)
+		return (NULL);
+	ft_str_fill(arr_aloc, s, c);
+	if (!arr_aloc)
+		return (NULL);
+	arr_aloc[nwords] = NULL;
+	return (arr_aloc);
+}
+
+
+
+/*int	main(void)
+{
+	int i = 0;
+	char **f = ft_split("ola,boa ", ',');
+	while (i < 2)
 	{
-		printf("%s\n", ft_split("ola,boa,tarde", ','));
-		return (0);
+		printf("%s\n", f[i]);
+		i++;
 	}
+	printf("%s", f[i]);
+	return (0);
+}*/
