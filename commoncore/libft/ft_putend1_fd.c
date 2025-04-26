@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putend1_fd                                      :+:      :+:    :+:   */
+/*   ft_putend1_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-23 10:52:05 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-23 10:52:05 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-26 14:18:03 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-26 14:18:03 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	ft_putend1_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
-
 /*int	main(void)
 {
-	ft_putend1_fd("ola tudo bem", 1);
+	ft_putend1_fd("ola boa tarde", 1);
 	return (0);
 }*/

@@ -12,35 +12,28 @@
 
 #include "libft.h"
 
-static char	*ft_nb_str(char *str, int n)
+static void	ft_nb_str(char *str, long nb, int *i)
 {
-	int	i;
-
-	i = 0;
-	if (n < 0)
+	if (nb < 0)
 	{
-		n = n * (-1);
-		str[i] = '-';
+		str[(*i)++] = '-';
+		nb = -nb;
 	}
-	if (n <= 9)
+	if (nb >= 10)
 	{
-		str[i] = (n + '0');
-		i++;
+		ft_nb_str(str, nb / 10, i);
 	}
-	else
-	{
-		ft_nb_str(str++, n / 10);
-		ft_nb_str(str++, n % 10);
-	}
-	return (str);
+	str[(*i)++] = (nb % 10) + '0';
 }
+
 static int	ft_int_len(int n)
 {
 	int	len;
-	int	res;
 
 	len = 0;
-	while (n > 0)
+	if (n < 0)
+		len++;
+	while (n != 0)
 	{
 		n = n / 10;
 		len++;
@@ -48,33 +41,45 @@ static int	ft_int_len(int n)
 	return (len);
 }
 
+char	*ft_zero(void)
+{
+	char	*str;
+
+	str = malloc(2 * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
-	char	*final;
 	int		len;
+	int		i;
+	long	nb;
 
+	i = 0;
+	nb = n;
+	if (n == 0)
+	{
+		return (ft_zero());
+	}
 	len = ft_int_len(n);
-	if (n < 0)
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
 	{
-		str = malloc((len + 2) * sizeof(char));
-		if (!str)
-			return ('\0');
-		final = ft_nb_str(str, n);
+		return (NULL);
 	}
-	else
-	{
-		str = malloc((len + 1) * sizeof(char));
-		if (!str)
-			return (NULL);
-		final = ft_nb_str(str, n);
-	}
-	return (final);
+	ft_nb_str(str, nb, &i);
+	str[i] = '\0';
+	return (str);
 }
-int	main(void)
+/*int	main(void)
 {
 	int n;
-	n = 8906;
+	n = 0;
 	printf("%s\n", ft_itoa(n));
 	return (0);
-}
+}*/

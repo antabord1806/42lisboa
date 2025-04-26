@@ -22,11 +22,13 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (NULL);
 	i = 0;
 	max = ft_strlen(s);
-	if (len > max)
-		len = max;
 	if (start > max)
-		return (char *)ft_strdup("");
+		return ((char *)ft_strdup(""));
+	if (len > max - start)
+		len = max - start;
 	sub = malloc((len + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
 	while (i < len)
 	{
 		sub[i] = s[start + i];
@@ -37,7 +39,9 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 }
 /*int main(void)
 {
-	char *s = ft_substr("ola tudo bem", 30, 10);
+	char	*s;
+
+	s = ft_substr("ola tudo bem", 30, 10);
 	if (!s)
 	{
 		printf("rip\n");
@@ -47,7 +51,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	free (s);
 	return (0);
 }
-int main(void)
+int	main(void)
 {
 	char *s = ft_substr("ola tudo bem", 7, 20); // "tudo bem"
 

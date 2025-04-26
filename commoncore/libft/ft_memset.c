@@ -17,8 +17,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned char	*p;
 
 	p = (unsigned char *)s;
-	if (!s)
-		return (NULL);
 	while (n--)
 	{
 		*p = (unsigned char)c;
@@ -31,7 +29,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	char str1[] = "";
 	char str2[] = "";
 	ft_memset(str1, 'a', 5);
-	memset(str2, 'a', 5);
+	//memset(str2, 'a', 5);
 	printf("%s\n", str1);
 	printf("%s", str2);
 	return (0);

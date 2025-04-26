@@ -20,23 +20,18 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	dst_len = 0;
 	src_len = ft_strlen(src);
-	// Encontra o tamanho atual de dst
 	while (dst[dst_len] && dst_len < dstsize)
 		dst_len++;
-	// Se dst_len >= dstsize, não há espaço para copiar nada
 	if (dst_len == dstsize)
 		return (dstsize + src_len);
-	// Copia os caracteres de src para dst (sem ultrapassar dstsize - 1)
 	i = 0;
 	while (src[i] && (dst_len + i + 1) < dstsize)
 	{
 		dst[dst_len + i] = src[i];
 		i++;
 	}
-	// Finaliza com '\0' se couber
 	if (dst_len + i < dstsize)
 		dst[dst_len + i] = '\0';
-	// Retorna o tamanho total que teria sido criado
 	return (dst_len + src_len);
 }
 

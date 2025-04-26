@@ -17,10 +17,11 @@ int	ft_strcheck(char s1, const char *set)
 	int	i;
 
 	i = 0;
-	while (*set)
+	while (set[i])
 	{
 		if (s1 == set[i])
 			return (1);
+		i++;
 	}
 	return (0);
 }
@@ -32,18 +33,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*new_str;
 
 	start = 0;
+	if (!s1)
+		return (NULL);
 	end = ft_strlen(s1) - 1;
 	while (ft_strcheck(s1[start], (char *)set))
 	{
 		start++;
 	}
-	if (!s1)
-		return (NULL);
 	while (start < end && ft_strcheck(s1[end], (char *)set))
 	{
 		end--;
 	}
-	new_str = ft_substr((char *)s1, start, end - start);
+	if (start > end)
+		return (ft_substr(s1, start, 0));
+	new_str = ft_substr(s1, start, end - start + 1);
 	return (new_str);
 }
 

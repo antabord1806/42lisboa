@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	const unsigned char	*p = (const unsigned char *)s;
 
 	i = 0;
-	while (i <= n)
+	while (i < n)
 	{
 		if (p[i] == (unsigned char)c)
 			return ((void *)&p[i]);
@@ -30,8 +30,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 /*int main(void)
 {
 	char s[] = "ola tudo bem";
-	int c = 'z';
-	size_t n = 10;
+	int c = 0;
+	size_t n = 0;
 	char *res1 = ft_memchr(s, c, n);
 	char *res2 = memchr(s, c, n);
 	if (res1 == NULL)

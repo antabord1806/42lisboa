@@ -20,12 +20,9 @@ char	*ft_strdup(const char *s)
 
 	str = (unsigned char *)s;
 	i = 0;
-	if (s == NULL)
-	{
-		printf("string is empty");
-		return (NULL);
-	}
 	p = malloc((ft_strlen((const char *)str) + 1) * sizeof(char));
+	if (!p)
+		return (NULL);
 	while (i < (size_t)ft_strlen((const char *)str))
 	{
 		p[i] = (unsigned char)str[i];

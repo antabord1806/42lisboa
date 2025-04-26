@@ -23,17 +23,20 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	len = ft_strlen(s);
 	newstr = malloc((len + 1) * sizeof(char));
+	if (!newstr)
+		return (NULL);
 	while (i < len)
 	{
 		newstr[i] = f(i, s[i]);
 		i++;
 	}
+	newstr[i] = '\0';
 	return (newstr);
 }
 
-/*char    ft_uppercase(unsigned int i, char c)
+/*char	ft_uppercase(unsigned int i, char c)
 {
-	if(i > 3)
+	if (i > 3)
 		return (c - 48);
 	return (c);
 }

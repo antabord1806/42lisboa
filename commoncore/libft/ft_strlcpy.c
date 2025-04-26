@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	if (!src || !dst)
-		return (0);
 	if (size > 0)
 	{
 		while (i < size - 1 && src[i])
@@ -33,12 +31,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 /*int main(void)
 {
-	char src[] = "ola tudo bem";
-	char dest1[] = "123456789101112";
-	char dest2[] = "123456789101112";
+	char src[] = "";
+	char dest1[] = "";
+	char dest2[] = "";
 	ft_strlcpy(dest1, src, 4);
-	strlcpy(dest2, src, 4);
+	//strlcpy(dest2, src, 4);
 	printf("%s\n", dest1);
-	printf("%s\n", dest2);
+	//printf("%s\n", dest2);
 	return (0);
 }*/

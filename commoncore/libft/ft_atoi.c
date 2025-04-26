@@ -21,7 +21,7 @@ int	ft_atoi(const char *s)
 	i = 0;
 	sig = 1;
 	res = 0;
-	if ((s[i] >= 9 && s[i] <= 13) || (s[i] == 32))
+	while ((s[i] >= 9 && s[i] <= 13) || (s[i] == 32))
 		i++;
 	if (s[i] == '+' || s[i] == '-')
 	{
@@ -38,7 +38,7 @@ int	ft_atoi(const char *s)
 }
 /*int main(void)
 {
-	char  s[] = "-16125h";
+	char  s[] = "      -16125h";
 	int res1 = ft_atoi(s);
 	//int res2 = atoi(s);
 	printf("%d\n", res1);

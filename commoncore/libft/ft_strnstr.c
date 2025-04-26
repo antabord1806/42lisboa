@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 1;
-	if (!little)
+	if (*little == '\0')
 		return ((char *)big);
 	while (big[i] && i < len)
 	{
@@ -37,7 +37,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 }
 /*int	main(void)
 {
-	unsigned char little[] = "rd";
+	unsigned char little[] = "";
 	unsigned char big[] = "ola boa tarde";
 	size_t n = 20;
 	char *c;

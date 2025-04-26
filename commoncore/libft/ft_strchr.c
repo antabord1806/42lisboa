@@ -20,7 +20,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
-	if (*s == '\0')
+	if ((char)c == '\0')
 	{
 		return ((char *)s);
 	}
@@ -29,11 +29,11 @@ char	*ft_strchr(const char *s, int c)
 
 /*int main(void)
 {
-	const char  s[] = "ola tudo bem";
-	int c = 'b';
+	const char  s[] = "s";
+	int c = 'z';
 	char *res1 = ft_strchr(s, c);
-	char *res2 = strchr(s, c);
+	//char *res2 = strchr(s, c);
 	printf("%s\n", res1);
-	printf("%s\n", res2);
+	//printf("%s\n", res2);
 	return (0);
 }*/

@@ -24,6 +24,7 @@ static void	ft_free_all(char **arr_aloc)
 	}
 	free(arr_aloc);
 }
+
 static size_t	ft_count_words(char const *s, char c)
 {
 	int	i;
@@ -41,7 +42,7 @@ static size_t	ft_count_words(char const *s, char c)
 	return (i);
 }
 
-static int	ft_str_fill(char **arr_aloc, char const *s, char c)
+static void	ft_str_fill(char **arr_aloc, char const *s, char c)
 {
 	size_t	len;
 	int		i;
@@ -63,13 +64,11 @@ static int	ft_str_fill(char **arr_aloc, char const *s, char c)
 			if (!arr_aloc[i])
 			{
 				ft_free_all(arr_aloc);
-				return (0);
 			}
 			ft_strlcpy(arr_aloc[i], s - len, len + 1);
 		}
 		i++;
 	}
-	return (0);
 }
 
 char	**ft_split(char const *s, char c)
@@ -89,8 +88,6 @@ char	**ft_split(char const *s, char c)
 	arr_aloc[nwords] = NULL;
 	return (arr_aloc);
 }
-
-
 
 /*int	main(void)
 {
