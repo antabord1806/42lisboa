@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putend1_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-26 14:18:03 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-26 14:18:03 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-28 10:31:08 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-28 10:31:08 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putend1_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
@@ -23,6 +23,7 @@ void	ft_putend1_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
+
 /*int	main(void)
 {
 	ft_putend1_fd("ola boa tarde", 1);

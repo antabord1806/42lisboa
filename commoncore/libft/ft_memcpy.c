@@ -21,8 +21,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	source = (unsigned char *)src;
 	destino = (unsigned char *)dest;
 	i = 0;
-	if (!src && !dest)
-		return (NULL);
 	while (n--)
 	{
 		destino[i] = source[i];
@@ -33,12 +31,12 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 /*int main(void)
 {
-	char src[] = "ola tudo bem";
+	char src[] = "";
 	char dest1[] = "123456789101112";
-	char dest2[] = "123456789101112";
-	ft_memcpy(dest1, src, 4);
-	memcpy(dest2, src, 4);
-	printf("%s\n", dest1);
+	char dest2[] = "";
+	//ft_memcpy(dest1, src, 4);
+	memcpy(dest2, src, 2);
+	//printf("%s\n", dest1);
 	printf("%s", dest2);
 	return (0);
 }*/
