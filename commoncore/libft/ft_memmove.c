@@ -43,8 +43,8 @@ int main(void)
 	char dest1[] = "123456789101112";
 	char dest2[] = "";
 	ft_memmove(dest1, src, 4);
-//	memmove(dest2, src, 4);
+	memmove(dest2, src, 4);
 	printf("%s\n", dest1);
-//	printf("%s", dest2);
+	printf("%s", dest2);
 	return (0);
 }

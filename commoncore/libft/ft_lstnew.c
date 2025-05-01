@@ -1,55 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-17 16:23:31 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-17 16:23:31 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-01 08:32:37 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-01 08:32:37 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	void	*ptr;
-	size_t	i;
+	t_list	*new;
 
-	i = 0;
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	if (nmemb > (size_t)-1 / size)
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (ptr == NULL)
-		return (NULL);
-	while (i < nmemb * size)
-	{
-		((unsigned char *)ptr)[i] = 0;
-		i++;
-	}
-	return (ptr);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
+
 /*int	main(void)
 {
-	int *a;
-	size_t n = 6;
-	int i = 0;
+	char *c;
 
-	a = (int *)ft_calloc(6, sizeof(int));
-	if (a == NULL)
+	c = "tralalero_tralala";
+	t_list *node = ft_lstnew(c);
+	if (node == NULL)
 	{
-		printf("Rip\n");
+		printf("rip");
 		return (1);
 	}
-	while (i < n)
-	{
-		printf("%d", a[i]);
-		i++;
-	}
-	printf("\n");
-	free(a);
+	printf("conteudo do no: %s\n", (char *)node -> content);
+	printf("depois do no vem: %p\n", (void *)node -> next);
+	free(node);
 	return (0);
 }*/

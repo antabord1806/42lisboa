@@ -41,7 +41,7 @@ static int	ft_int_len(int n)
 	return (len);
 }
 
-char	*ft_zero(void)
+static char	*ft_zero(void)
 {
 	char	*str;
 
