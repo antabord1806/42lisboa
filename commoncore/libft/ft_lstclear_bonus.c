@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 12:46:20 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 12:46:20 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:22 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:22 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*n4;
 	t_list	*tmp;
 
-	n1 = ft_lstnew(ft_strdup("tralalero"));
-	n2 = ft_lstnew(ft_strdup("tralala"));
-	n3 = ft_lstnew(ft_strdup("bombradiro"));
-	n4 = ft_lstnew(ft_strdup("crocodilo"));
+	n1 = ft_lstnew_bonus(ft_strdup("tralalero"));
+	n2 = ft_lstnew_bonus(ft_strdup("tralala"));
+	n3 = ft_lstnew_bonus(ft_strdup("bombradiro"));
+	n4 = ft_lstnew_bonus(ft_strdup("crocodilo"));
 	n1->next = n2;
 	n2->next = n3;
 	n3->next = n4;
@@ -55,13 +55,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		tmp = tmp->next;
 	}
 	n2->next = NULL;
-	ft_lstclear(&n3, del);
+	ft_lstclear_bonus(&n3, del);
 	tmp = n1;
 	while (tmp != NULL)
 	{
 		printf("post cleanup:%s\n", (char *)tmp->content);
 		tmp = tmp->next;
 	}
-	ft_lstclear(&n1, del);
+	ft_lstclear_bonus(&n1, del);
 	return (0);
 }*/

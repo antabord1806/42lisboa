@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 08:08:18 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 08:08:18 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:53 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:53 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*t_list *create_node(void *content)
+t_list	*create_node(void *content)
 {
-    t_list *new_node = (t_list *)malloc(sizeof(t_list));
-    if (!new_node)
-        return NULL;
-    new_node->content = content;
-    new_node->next = NULL;
-    return new_node;
-}*/
+	t_list	*new_node;
 
-int		ft_lstsize(t_list *lst)
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+int	ft_lstsize(t_list *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst != NULL)
 	{
-		lst = lst -> next;
+		lst = lst->next;
 		i++;
 	}
 	return (i);

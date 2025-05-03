@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-29 12:31:50 by antabord          #+#    #+#             */
-/*   Updated: 2025-04-29 12:31:50 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:49 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:49 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstnew(void *content)
 {
-	if (n == -2147483648)
-	{
-		write (fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		n = -n;
-		write(fd, "-", 1);
-	}
-	if (n <= 9)
-	{
-		n = n + '0';
-		write (fd, &n, 1);
-	}
-	else
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
 
 /*int	main(void)
 {
-	ft_putnbr_fd(-2147483648, 1);
+	char *c;
+
+	c = "tralalero_tralala";
+	t_list *node = ft_lstnew(c);
+	if (node == NULL)
+	{
+		printf("rip");
+		return (1);
+	}
+	printf("conteudo do no: %s\n", (char *)node -> content);
+	printf("depois do no vem: %p\n", (void *)node -> next);
+	free(node);
 	return (0);
 }*/

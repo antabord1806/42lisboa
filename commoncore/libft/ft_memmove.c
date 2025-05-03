@@ -26,7 +26,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		while (n--)
 			d[n] = s[n];
 	}
-	if (s > d)
+	else
 	{
 		while (i < n)
 		{
@@ -36,15 +36,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-int main(void)
+/*int main(void)
 {
 	char src[] = "";
 	char dest1[] = "123456789101112";
-	char dest2[] = "";
-	ft_memmove(dest1, src, 4);
-	memmove(dest2, src, 4);
+	char dest2[] = "123456789101112";
+	ft_memmove(src + 2, src, 4);
+	memmove(src + 2, src, 4);
 	printf("%s\n", dest1);
-	printf("%s", dest2);
+	printf("%s\n", dest2);
 	return (0);
-}
+}*/

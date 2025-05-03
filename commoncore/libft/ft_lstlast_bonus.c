@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 09:18:21 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 09:18:21 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:35 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:35 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_list	*ft_lstlast(t_list *lst)
 	n2->next = n3;
 	n3->next = NULL;
 
-	t_list *res = ft_lstlast(n1);
+	t_list *res = ft_lstlast_bonus(n1);
 	printf("ultimo node: %s\n", (char *)res->content);
 	free(n1);
 	free(n2);

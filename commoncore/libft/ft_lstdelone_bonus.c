@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 10:55:59 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 10:55:59 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:03 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:03 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 		i++;
 	}
 	mal[i] = '\0';
-	t_list *node = ft_lstnew(mal);
+	t_list *node = ft_lstnew_bonus(mal);
 	if (!node)
 	{
 		free(mal);
 		return (1);
 	}
 	printf("pré apagar: %s\n", (char *)node->content);
-	ft_lstdelone(node, del);
+	ft_lstdelone_bonus(node, del);
 	printf("apagado com sucesso\n");
 
 	return (0);

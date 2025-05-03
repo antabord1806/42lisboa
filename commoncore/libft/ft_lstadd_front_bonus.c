@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 08:32:37 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 08:32:37 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:43:07 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:43:07 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+/*t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
@@ -22,21 +22,32 @@ t_list	*ft_lstnew(void *content)
 	new->content = content;
 	new->next = NULL;
 	return (new);
+}*/
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!new || !lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
 /*int	main(void)
 {
-	char *c;
+	t_list *head = ft_lstnew_bonus("ola");
+	t_list *n2 = ft_lstnew_bonus("tralalero");
+	t_list *n3 = ft_lstnew_bonus("tralala");
 
-	c = "tralalero_tralala";
-	t_list *node = ft_lstnew(c);
-	if (node == NULL)
+	ft_lstadd_front_bonus(&head, n2);
+	ft_lstadd_front_bonus(&head, n3);
+
+	t_list *atual = head;
+	while (atual != NULL)
 	{
-		printf("rip");
-		return (1);
+		printf("conteudo nó: %s\n", (char *)atual->content);
+		atual = atual->next;
 	}
-	printf("conteudo do no: %s\n", (char *)node -> content);
-	printf("depois do no vem: %p\n", (void *)node -> next);
-	free(node);
+	free(n2);
+	free(n3);
 	return (0);
 }*/

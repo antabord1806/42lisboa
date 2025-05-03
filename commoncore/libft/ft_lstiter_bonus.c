@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-01 15:45:23 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-01 15:45:23 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-03 15:42:29 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-03 15:42:29 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 
-void ft_uppercase(void *content)
+/*void ft_uppercase(void *content)
 {
 	char *c;
 
@@ -36,13 +36,13 @@ void ft_uppercase(void *content)
 	}
 }
 
-/*int	main(void)
+int	main(void)
 {
 	t_list	*tmp;
-	t_list	*n1 = ft_lstnew(ft_strdup("tralalero"));
-	t_list	*n2 = ft_lstnew(ft_strdup("tralala"));
-	t_list	*n3 = ft_lstnew(ft_strdup("ola"));
-	t_list	*n4 = ft_lstnew(ft_strdup("adeus"));
+	t_list	*n1 = ft_lstnew_bonus(ft_strdup("tralalero"));
+	t_list	*n2 = ft_lstnew_bonus(ft_strdup("tralala"));
+	t_list	*n3 = ft_lstnew_bonus(ft_strdup("ola"));
+	t_list	*n4 = ft_lstnew_bonus(ft_strdup("adeus"));
 
 	n1->next = n2;
 	n2->next = n3;
@@ -55,7 +55,7 @@ void ft_uppercase(void *content)
 		tmp = tmp->next;
 	}
 	tmp = n1;
-	ft_lstiter(n1, ft_uppercase);
+	ft_lstiter_bonus(n1, ft_uppercase);
 	while (tmp != NULL)
 	{
 		printf("post_function: %s\n",(char *)tmp->content);
