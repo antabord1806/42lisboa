@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_list	*create_node(void *content)
+/*t_list	*create_node(void *content)
 {
 	t_list	*new_node;
 
@@ -22,7 +22,7 @@ t_list	*create_node(void *content)
 	new_node->content = content;
 	new_node->next = NULL;
 	return (new_node);
-}
+}*/
 
 int	ft_lstsize(t_list *lst)
 {

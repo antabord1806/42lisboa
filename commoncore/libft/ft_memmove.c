@@ -21,6 +21,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
 	i = 0;
+	if (!dest && !src)
+		return (NULL);
 	if (d > s)
 	{
 		while (n--)
@@ -38,11 +40,11 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 }
 /*int main(void)
 {
-	char src[] = "";
-	char dest1[] = "123456789101112";
-	char dest2[] = "123456789101112";
-	ft_memmove(src + 2, src, 4);
-	memmove(src + 2, src, 4);
+	char src[] = "olatudobem";
+	char dest1[] = "123456";
+	char dest2[] = "123456";
+	ft_memmove(src, src + 2, 15);
+	memmove(src, src + 2, 15);
 	printf("%s\n", dest1);
 	printf("%s\n", dest2);
 	return (0);

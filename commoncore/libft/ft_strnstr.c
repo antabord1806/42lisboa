@@ -37,9 +37,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 }
 /*int	main(void)
 {
-	unsigned char little[] = "";
-	unsigned char big[] = "ola boa tarde";
-	size_t n = 20;
+	unsigned char little[] = "axx";
+	unsigned char big[] = "xx";
+	size_t n = 6;
 	char *c;
 	c = ft_strnstr(big, little, n);
 	// NULL

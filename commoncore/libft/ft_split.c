@@ -88,16 +88,19 @@ char	**ft_split(char const *s, char c)
 	arr_aloc[nwords] = NULL;
 	return (arr_aloc);
 }
-
-/*int	main(void)
+/* 
+int	main(int ac, char *av[])
 {
-	int i = 0;
-	char **f = ft_split("ola,boa ", ',');
-	while (i < 2)
+	int	i = 0;
+	char **f = ft_split(av[1], av[2][0]);
+	if (ac == 3)
 	{
-		printf("%s\n", f[i]);
-		i++;
+		while (f[i])
+		{
+			printf("%s\n", f[i]);
+			i++;
+		}
+		free(f);
 	}
-	printf("%s", f[i]);
 	return (0);
-}*/
+} */

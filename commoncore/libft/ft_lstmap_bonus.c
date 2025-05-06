@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	del(void *content)
+/*void	del(void *content)
 {
 	free(content);
-}
+}*/
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -30,7 +30,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		new_content = f(lst->content);
 		newnode = ft_lstnew(new_content);
-		if (!newstr)
+		if (!newnode)
 		{
 			ft_lstclear(&newstr, del);
 			return (NULL);
@@ -42,25 +42,30 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 }
 /*void	*ft_uppercase(void *content)
 {
-	char	*c;
+	char *str = (char *)content;
+	char *copy = strdup(str);
+	char *p = copy;
 
-	c = (char *)content;
-	while (*c)
+	if (!copy)
+		return NULL;
+
+	while (*p)
 	{
-		if (*c >= 'a' && *c <= 'z')
-			*c = *c - 32;
-		c++;
+		if (*p >= 'a' && *p <= 'z')
+			*p -= 32;
+		p++;
 	}
-	return (content);
-}*/
+	return (copy);
+}
 
-/*int	main(void)
+
+int	main(void)
 {
 	t_list *tmp;
 	t_list *n1 = ft_lstnew(ft_strdup("ola"));
 	t_list *n2 = ft_lstnew(ft_strdup("tudo"));
 	t_list *n3 = ft_lstnew(ft_strdup("bem"));
-	t_list *newlst;
+	//t_list *newlst;
 
 	n1->next = n2;
 	n2->next = n3;
@@ -78,7 +83,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	tmp = n1;
 	while (tmp != NULL)
 	{
-		newlst = ft_lstmap(tmp, &ft_uppercase, del);
+		ft_lstmap(tmp, &ft_uppercase, del);
+		ft_lstclear(&newlst, del);
 		printf("%s\n", (char *)tmp->content);
 		tmp = tmp->next;
 	}
@@ -86,5 +92,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	free(n1);
 	free(n2);
 	free(n3);
+	ft_lstclear(&n1, del);
 	return (0);
 }*/
