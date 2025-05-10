@@ -3,16 +3,16 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-NAME = libftprintf.all
+NAME = libftprintf.a
 
-SRC = ft_printf.c ft_printf_aux.c \
+SRC = ft_printf.c ft_print_pointer.c ft_printhexa.c ft_printhexa_upper.c \
+      ft_printint.c ft_printstr.c ft_printchar.c ft_printunsigned \
 
-OBJ = $(SRC: .c=.o)
-
+OBJ = $(SRC:.c=.o)  
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR): $(NAME) $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -25,4 +25,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

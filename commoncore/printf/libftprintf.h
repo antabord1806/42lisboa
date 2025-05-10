@@ -18,13 +18,14 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-int     ft_printf(const char *format, ...);
+int     ft_putchar(char c);
 int     ft_printchar(char c);
-int     ft_printstr( char *str);
-int     ft_printhexa(unsigned long long nb);
-int     ft_printhexa_upper(int nb);
-int    ft_print_pointer(void *p);
-int    ft_putchar(char c);
+int     ft_printf(const char *format, ...);
+int     ft_printstr(char *str);
+int     ft_printhexa(unsigned nb);
+int     ft_printhexa_upper(unsigned nb);
+int     ft_print_pointer(void *p);
 int     ft_printint(int c);
+int     ft_printunsigned(unsigned c);
 
 #endif

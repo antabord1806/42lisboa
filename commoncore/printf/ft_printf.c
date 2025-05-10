@@ -14,7 +14,13 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int print_checker(va_list ptr, char format)
+static int     ft_putchar(char c)
+{
+    write(1, &c, 1);
+    return (1);
+}
+
+static int print_checker(va_list ptr, char format)
 {
     int len;
 
@@ -27,8 +33,8 @@ int print_checker(va_list ptr, char format)
         len += ft_print_pointer(va_arg(ptr, void *));
     else if (format == 'i' || format == 'd')
         len += ft_printint(va_arg(ptr, int));
-    //else if (spec == 'u')
-        //len += ft_printunsigned(va_arg(ptr, unsigned char));
+    else if (format == 'u')
+        len += ft_printunsigned(va_arg(ptr, unsigned int));
     else if (format == 'x')
         len += ft_printhexa(va_arg(ptr, int));
     else if (format == 'X')
@@ -63,28 +69,28 @@ int ft_printf(const char *format, ...)
 
 int main(void)
 {
-    char c = 'a';
+    char c = '5';
     char *s = "ola tudo bem";
     void *p = &c;
     int i = 45565;
-    int negativo = -88820;
+    int n = -88820;
 
     ft_printf("------ft_printf--------\n");
     ft_printf("%c\n", c);
     ft_printf("%s\n", s);
-    ft_printf("%d\n", 362386);
-    ft_printf("%i\n", -7262);
+    ft_printf("%d\n", n);
+    ft_printf("%i\n", i);
     ft_printf("%p\n", p);
-    ft_printf("%x\n", 15);
-    ft_printf("%X\n", 15);
+    ft_printf("%x\n", -10);
+    ft_printf("%X\n", -10);
 
     printf("------printf--------\n");
     printf("%c\n", c);
     printf("%s\n", s);
-    printf("%d\n", 362386);
-    printf("%i\n", -7262);
+    printf("%d\n", n);
+    printf("%i\n", i);
     printf("%p\n", p);
-    printf("%x\n", 15);
-    printf("%X\n", 15);
+    printf("%x\n", -10);
+    printf("%X\n", -10);
     return (0);
 }
