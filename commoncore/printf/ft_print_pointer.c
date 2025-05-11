@@ -6,7 +6,7 @@
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025-05-11 15:43:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-11 15:43:57 by antabord         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:53:32 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ static int	ft_printhexa_pointer(unsigned long long nb)
 
 int	ft_print_pointer(void *p)
 {
-	unsigned long long ptr;
-	int i;
+	unsigned long long	ptr;
+	int					i;
 
 	i = 0;
 	ptr = (unsigned long long)p;
-	i += ft_printstr("0x");
-	i += ft_printhexa_pointer(ptr);
+	if (!ptr)
+		i += ft_printstr("(nil)");
+	else
+	{
+		i += ft_printstr("0x");
+		i += ft_printhexa_pointer(ptr);
+	}
 	return (i);
 }
