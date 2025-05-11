@@ -6,7 +6,7 @@ RM = rm -f
 NAME = libftprintf.a
 
 SRC = ft_printf.c ft_print_pointer.c ft_printhexa.c ft_printhexa_upper.c \
-      ft_printint.c ft_printstr.c ft_printchar.c ft_printunsigned \
+      ft_printint.c ft_printstr.c ft_printchar.c ft_printunsigned.c \
 
 OBJ = $(SRC:.c=.o)  
 all: $(NAME)
