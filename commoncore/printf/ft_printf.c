@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-11 15:46:06 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-11 15:46:06 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-11 16:04:51 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-11 16:04:51 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_printf(const char *format, ...)
 	int		i;
 
 	if (!format)
-		return (1);
+		return (-1);
 	total = 0;
 	i = 0;
 	va_start(ptr, format);
@@ -70,32 +70,3 @@ int	ft_printf(const char *format, ...)
 	va_end(ptr);
 	return (total);
 }
-
-/*int main(void)
-{
-	char c = 0;
-	char *s = "ola tudo bem";
-	void *p1 = &c;
-	void *p2 = &s;
-	int i = 0;
-	int n = -1;
-
-	ft_printf("------ft_printf--------\n");
-	ft_printf("ola tudo bem %c\n", c);
-	ft_printf("NULL s NULL\n", NULL);
-	ft_printf("42, %, adeus%d\n", n);
-	ft_printf("%i\n", i);
-	ft_printf("ponteiros %p %p\n", p1, p2);
-	ft_printf("%x\n", n);
-	ft_printf("%X\n", n);
-
-	printf("------printf--------\n");
-	printf("ola tudo bem %c\n", c);
-	printf("NULL s NULL\n", NULL);
-	printf("42, %, adeus%d\n", n);
-	printf("%i\n", i);
-	printf("ponteiros %p %p\n", p1, p2);
-	printf("%x\n", n);
-	printf("%X\n", n);
-	return (0);
-}*/
