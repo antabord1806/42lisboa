@@ -15,10 +15,13 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <fcntl.h>
+#include <stdlib.h>
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_strlen(const char *str);
 
 #endif

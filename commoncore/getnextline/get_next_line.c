@@ -38,15 +38,18 @@ char	*temp_getter(int fd, char *temp)
 	while (bytes_read > 0 && !ft_strchr(temp, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		old_temp = temp;
 		if (bytes_read < 0)
-			break
+			return (NULL);
+		buffer[bytes_read] = '\0';
+		old_temp = temp;
+		if (!temp)
+				temp = ft_strdup(buffer);
+		temp = ft_strjoin(temp, buffer);
+		if (!temp)
+				return (NULL);
+		free(old_temp);
 	}
 	temp[bytes_read] = '\0';
-	if (!temp)
-		return (NULL);
-	temp = ft_strjoin(temp, buffer);
-	free(old_temp);
 	return (temp);
 }
 char	*temp_destroyer(char *temp)
@@ -83,25 +86,25 @@ char	*get_next_line(int fd)
 	temp = temp_destroyer(temp);
 	return (line);
 }
-
 int	main(void)
 {
 	int		fd;
-	char	*linha;
+	char	*line;
 
-	// Abre o arquivo para leitura
-	fd = open("exemplo.txt", O_RDONLY);
-	if (fd < 0)
+	// Abrir o arquivo para leitura
+	fd = open("arquivo.txt", O_RDONLY);
+	if (fd == -1)
 	{
 		perror("Erro ao abrir o arquivo");
 		return (1);
 	}
-	// Lê e imprime linha por linha
-	while ((linha = get_next_line(fd)) != NULL)
+	// Ler e imprimir cada linha
+	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", linha);
-		free(linha); // Libera a memória da linha
+		printf("%s", line); // a linha já contém '\n' se houver
+		free(line);         // liberar memória da linha lida
 	}
-	close(fd); // Fecha o arquivo
+	// Fechar o arquivo
+	close(fd);
 	return (0);
 }
