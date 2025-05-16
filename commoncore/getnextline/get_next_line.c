@@ -14,26 +14,23 @@
 
 char	*line_extractor(char *temp)
 {
-	size_t	len;
+	size_t	len = 0;
 
-	len = 0;
+	if (!temp || !*temp)
+		return (NULL);
 	while (temp[len] && temp[len] != '\n')
 		len++;
 	if (temp[len] == '\n')
 		len++;
-	if (!temp[len])
-		return (NULL);
 	return (ft_substr(temp, 0, len));
 }
-
 char	*temp_getter(int fd, char *temp)
 {
 	int		bytes_read;
 	char	buffer[BUFFER_SIZE + 1];
-	char	*old_temp;
 
 	bytes_read = 1;
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 1 || fd < 0)
 		return (NULL);
 	while (bytes_read > 0 && !ft_strchr(temp, '\n'))
 	{
@@ -41,28 +38,21 @@ char	*temp_getter(int fd, char *temp)
 		if (bytes_read < 0)
 			return (NULL);
 		buffer[bytes_read] = '\0';
-		old_temp = temp;
 		if (!temp)
-				temp = ft_strdup(buffer);
-		temp = ft_strjoin(temp, buffer);
-		if (!temp)
-				return (NULL);
-		free(old_temp);
+    		temp = ft_strdup(buffer);
 	}
-	temp[bytes_read] = '\0';
 	return (temp);
 }
 char	*temp_destroyer(char *temp)
 {
 	char	*restos;
-	size_t	i;
+	size_t	i = 0;
 
-	i = 0;
-	while (temp[i] != '\n' && temp[i])
+	while (temp[i] && temp[i] != '\n')
 		i++;
 	if (temp[i] == '\n')
 		i++;
-	if (!temp[i])
+	if (!temp[i]) // chegou no final do buffer
 	{
 		free(temp);
 		return (NULL);
@@ -82,7 +72,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = line_extractor(temp);
 	if (!line)
+	{
+		free(temp);
+		temp = NULL;
 		return (NULL);
+	}
 	temp = temp_destroyer(temp);
 	return (line);
 }
