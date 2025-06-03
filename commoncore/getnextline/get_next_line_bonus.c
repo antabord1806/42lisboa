@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-13 09:29:21 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-13 09:29:21 by antabord         ###   ########.fr       */
+/*   Created: 2025-05-22 10:30:57 by antabord          #+#    #+#             */
+/*   Updated: 2025-05-22 10:30:57 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-char	*line_extractor(char *temp)
+static char	*line_extractor(char *temp)
 {
 	size_t	len;
 
@@ -26,21 +26,21 @@ char	*line_extractor(char *temp)
 	return (ft_substr(temp, 0, len));
 }
 
-char	*temp_getter(int fd, char *temp)
+static char	*temp_getter(int fd, char *temp)
 {
 	char	*old_temp;
-	int		bytes_read;
 	char	*buffer;
+	int		bytes_read;
 
 	bytes_read = 1;
 	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
-	if (BUFFER_SIZE < 1 || fd < 0 || !buffer)
+	if (BUFFER_SIZE < 1 || !buffer)
 		return (free(buffer), NULL);
 	while (bytes_read > 0 && !ft_strchr(temp, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (free(buffer), NULL);
+			return (free(buffer), free(temp), NULL);
 		buffer[bytes_read] = '\0';
 		if (!temp)
 			temp = ft_strdup(buffer);
@@ -55,7 +55,7 @@ char	*temp_getter(int fd, char *temp)
 	return (temp);
 }
 
-char	*temp_destroyer(char *temp)
+static char	*temp_destroyer(char *temp)
 {
 	char	*restos;
 	size_t	i;
@@ -79,41 +79,66 @@ char	*temp_destroyer(char *temp)
 
 char	*get_next_line(int fd)
 {
-	static char	*temp;
+	static char	*temp[FOPEN_MAX];
 	char		*line;
 
-	temp = temp_getter(fd, temp);
-	if (!temp)
+	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
-	line = line_extractor(temp);
+	temp[fd] = temp_getter(fd, temp[fd]);
+	if (!temp[fd])
+		return (NULL);
+	line = line_extractor(temp[fd]);
 	if (!line)
 	{
-		free(temp);
-		temp = NULL;
+		free(temp[fd]);
+		temp[fd] = NULL;
 		return (NULL);
 	}
-	temp = temp_destroyer(temp);
+	temp[fd] = temp_destroyer(temp[fd]);
 	return (line);
 }
-/*int	main(void)
+/*int main(void)
 {
-	int		fd;
-	char	*line;
+	int fd1 = open("arquivo1.txt", O_RDONLY);
+	int fd2 = open("arquivo2.txt", O_RDONLY);
+	int fd3 = open("arquivo3.txt", O_RDONLY);
+	char *linha1;
+	char *linha2;
+	char *linha3;
 
-	// Abrir o arquivo para leitura
-	fd = open("arquivo1.txt", O_RDONLY);
-	if (fd == -1)
+	if (fd1 < 0 || fd2 < 0 || fd3 < 0)
 	{
-		perror("Erro ao abrir o arquivo");
+		perror("Erro ao abrir arquivos");
 		return (1);
 	}
-	// Ler e imprimir cada linha
-	while ((line = get_next_line(fd)) != NULL)
+	while (1)
 	{
-		printf("%s", line); // a linha já contém '\n' se houver
-		free(line);         // liberar memória da linha lida
+		linha1 = get_next_line(fd1);
+		linha2 = get_next_line(fd2);
+		linha3 = get_next_line(fd3);
+
+		if (!linha1 && !linha2)
+			break ;
+
+		if (linha1)
+		{
+			printf("arq1_ %s", linha1);
+			free(linha1);
+		}
+		if (linha2)
+		{
+			printf("arq2_ %s", linha2);
+			free(linha2);
+		}
+		if (linha3)
+		{
+			printf("arq3_ %s", linha3);
+			free(linha3);
+		}
 	}
-	// Fechar o arquivo
-	close(fd);
+
+	close(fd3);
+	close(fd1);
+	close(fd2);
 	return (0);
 }*/
