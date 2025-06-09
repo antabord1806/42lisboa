@@ -106,11 +106,6 @@ char	*get_next_line(int fd)
 	char *linha2;
 	char *linha3;
 
-	if (fd1 < 0 || fd2 < 0 || fd3 < 0)
-	{
-		perror("Erro ao abrir arquivos");
-		return (1);
-	}
 	while (1)
 	{
 		linha1 = get_next_line(fd1);

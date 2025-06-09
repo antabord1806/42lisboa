@@ -12,18 +12,30 @@
 
 #include "get_next_line.h"
 
-static char	*line_extractor(char *temp)
+static char	*line_extractor(char *temp, int start)
 {
 	size_t	len;
+	char	*sub;
+	size_t	i;
 
+	i = 0;
 	len = 0;
 	if (!temp || !*temp)
 		return (NULL);
-	while (temp[len] && temp[len] != '\n')
+	while (temp[len + start] && temp[len + start] != '\n')
 		len++;
-	if (temp[len] == '\n')
+	if (temp[len + start] == '\n')
 		len++;
-	return (ft_substr(temp, 0, len));
+	sub = malloc((len + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
+	while (i < len)
+	{
+		sub[i] = temp[start + i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }
 
 static char	*temp_getter(int fd, char *temp)
@@ -67,7 +79,7 @@ static char	*temp_destroyer(char *temp)
 		free(temp);
 		return (NULL);
 	}
-	restos = ft_substr(temp, i, ft_strlen(temp) - i);
+	restos = line_extractor(temp, i);
 	free(temp);
 	return (restos);
 }
@@ -80,7 +92,7 @@ char	*get_next_line(int fd)
 	temp = temp_getter(fd, temp);
 	if (!temp)
 		return (NULL);
-	line = line_extractor(temp);
+	line = line_extractor(temp, 0);
 	if (!line)
 	{
 		free(temp);
