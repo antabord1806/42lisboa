@@ -12,85 +12,33 @@
 
 #include "get_next_line.h"
 
-static char	*line_extractor(char *temp)
-{
-	size_t	len;
-
-	len = 0;
-	if (!temp || !*temp)
-		return (NULL);
-	while (temp[len] && temp[len] != '\n')
-		len++;
-	if (temp[len] == '\n')
-		len++;
-	return (ft_substr(temp, 0, len));
-}
-
-static char	*temp_getter(int fd, char *temp)
-{
-	char	*old_temp;
-	int		bytes_read;
-	char	*buffer;
-
-	bytes_read = 1;
-	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
-	if (BUFFER_SIZE < 1 || fd < 0 || !buffer)
-		return (free(buffer), NULL);
-	while (bytes_read > 0 && !ft_strchr(temp, '\n'))
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (free(buffer), NULL);
-		buffer[bytes_read] = '\0';
-		old_temp = temp;
-		temp = ft_strjoin(temp, buffer);
-		free(old_temp);
-	}
-	free(buffer);
-	return (temp);
-}
-
-static char	*temp_destroyer(char *temp)
-{
-	char	*restos;
-	size_t	i;
-
-	i = 0;
-	if (!temp)
-		return (NULL);
-	while (temp[i] && temp[i] != '\n')
-		i++;
-	if (temp[i] == '\n')
-		i++;
-	if (!temp[i])
-	{
-		free(temp);
-		return (NULL);
-	}
-	restos = ft_substr(temp, i, ft_strlen(temp) - i);
-	free(temp);
-	return (restos);
-}
-
 char	*get_next_line(int fd)
 {
-	static char	*temp;
-	char		*line;
+	int			bytes_read;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*old_buffer;
+	char		*temp;
 
-	temp = temp_getter(fd, temp);
-	if (!temp)
+	bytes_read = 1;
+	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
-	line = line_extractor(temp);
-	if (!line)
+	temp = ft_strchr(NULL, NULL, buffer, 1);
+	while (bytes_read > 0 && !ft_strchr(temp, NULL, NULL, 0))
 	{
-		free(temp);
-		temp = NULL;
-		return (NULL);
+		old_buffer = temp;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+			return (free(temp), NULL);
+		buffer[bytes_read] = '\0';
+		temp = ft_strjoin(temp, buffer);
+		free(old_buffer);
 	}
-	temp = temp_destroyer(temp);
-	return (line);
+	if (!temp || *temp == '\0')
+		return (free(temp), NULL);
+	old_buffer = ft_get_line(temp);
+	return (free(temp), old_buffer);
 }
-int	main(void)
+/* int	main(void)
 {
 	int		fd;
 	char	*line;
@@ -108,4 +56,4 @@ int	main(void)
 	}
 	close(fd);
 	return (0);
-}
+} */

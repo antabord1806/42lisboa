@@ -12,6 +12,33 @@
 
 #include "get_next_line.h"
 
+char	*rest_line(char *buffer)
+{
+	char	*sub;
+	size_t	start;
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	len = 0;
+	start = 0;
+	if (!buffer)
+		return (NULL);
+	while (buffer[start] && buffer[start] != '\n')
+		start++;
+	if (buffer[start] == '\n')
+		start++;
+	len = ft_strlen(buffer + start);
+	sub = malloc((len + 1) * sizeof(char));
+	while (i < len)
+	{
+		sub[i] = buffer[start + i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
+}
+
 int	ft_strlen(const char *str)
 {
 	int	l;
@@ -24,87 +51,81 @@ int	ft_strlen(const char *str)
 	return (l);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_get_line(char *temp)
 {
-	unsigned char	ch;
+	size_t	len;
+	size_t	i;
+	char	*line;
 
+	i = -1;
+	len = 0;
+	if (!temp)
+		return (NULL);
+	while (temp[len] && temp[len] != '\n')
+		len++;
+	if (temp[len] == '\n')
+		len++;
+	line = malloc((len + 1) * sizeof(char));
+	if (!line)
+		return (NULL);
+	while (++i < len)
+		line[i] = temp[i];
+	line[i] = '\0';
+	return (line);
+}
+
+char	*ft_strchr(const char *s, char *temp, char *buffer, int type)
+{
+	int	i;
+
+	i = -1;
+	if (type == 1)
+	{
+		if (buffer[0] != '\0')
+		{
+			temp = rest_line(buffer);
+			while (temp[++i])
+				buffer[i] = temp[i];
+			buffer[i] = '\0';
+			return (temp);
+		}
+		return (NULL);
+	}
 	if (!s)
 		return (NULL);
-	ch = (unsigned char)c;
 	while (*s)
 	{
-		if (*s == ch)
+		if (*s == '\n')
 			return ((char *)s);
 		s++;
 	}
-	if (ch == '\0')
-		return ((char *)s);
 	return (NULL);
-}
-
-char	*ft_strdup(char *s)
-{
-	int		i;
-	char	*p;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	p = malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!p)
-		return (NULL);
-	while (i < ft_strlen(s))
-	{
-		p[i] = s[i];
-		i++;
-	}
-	p[i] = '\0';
-	return (p);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
+	int		j;
 	char	*result;
-	size_t	total_len;
 
-	if (!s1 || !s2)
+	i = 0;
+	j = 0;
+	if (!s1 && !s2)
 		return (NULL);
-	total_len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc(sizeof(char) * (total_len + 1));
+	result = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!result)
 		return (NULL);
-	i = 0;
-	while (*s1)
-		result[i++] = *s1++;
-	while (*s2)
-		result[i++] = *s2++;
+	if (s1)
+	{
+		while (s1[i])
+		{
+			result[i] = s1[i];
+			i++;
+		}
+	}
+	if (s2)
+		while (s2[j])
+			result[i++] = s2[j++];
 	result[i] = '\0';
 	return (result);
-}
-
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	char	*sub;
-	size_t	i;
-	size_t	max;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	max = ft_strlen(s);
-	if (start > max)
-		return (NULL);
-	if (len > max - start)
-		len = max - start;
-	sub = malloc((len + 1) * sizeof(char));
-	if (!sub)
-		return (NULL);
-	while (i < len)
-	{
-		sub[i] = s[start + i];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
 }

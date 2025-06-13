@@ -5,135 +5,73 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-22 10:30:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-05-22 10:30:57 by antabord         ###   ########.fr       */
+/*   Created: 2025-06-13 09:45:51 by antabord          #+#    #+#             */
+/*   Updated: 2025-06-13 09:45:51 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
-
-static char	*line_extractor(char *temp)
-{
-	size_t	len;
-
-	len = 0;
-	if (!temp || !*temp)
-		return (NULL);
-	while (temp[len] && temp[len] != '\n')
-		len++;
-	if (temp[len] == '\n')
-		len++;
-	return (ft_substr(temp, 0, len));
-}
-
-static char	*temp_getter(int fd, char *temp)
-{
-	char	*old_temp;
-	char	*buffer;
-	int		bytes_read;
-
-	bytes_read = 1;
-	buffer = malloc(BUFFER_SIZE + 1 * sizeof(char));
-	if (BUFFER_SIZE < 1 || !buffer)
-		return (free(buffer), NULL);
-	while (bytes_read > 0 && !ft_strchr(temp, '\n'))
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (free(buffer), free(temp), NULL);
-		buffer[bytes_read] = '\0';
-		if (!temp)
-			temp = ft_strdup(buffer);
-		else
-		{
-			old_temp = temp;
-			temp = ft_strjoin(temp, buffer);
-			free(old_temp);
-		}
-	}
-	free(buffer);
-	return (temp);
-}
-
-static char	*temp_destroyer(char *temp)
-{
-	char	*restos;
-	size_t	i;
-
-	i = 0;
-	if (!temp)
-		return (NULL);
-	while (temp[i] && temp[i] != '\n')
-		i++;
-	if (temp[i] == '\n')
-		i++;
-	if (!temp[i])
-	{
-		free(temp);
-		return (NULL);
-	}
-	restos = ft_substr(temp, i, ft_strlen(temp) - i);
-	free(temp);
-	return (restos);
-}
 
 char	*get_next_line(int fd)
 {
-	static char	*temp[FOPEN_MAX];
-	char		*line;
+	int			bytes_read;
+	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
+	char		*old_buffer;
+	char		*temp;
 
-	if (fd < 0 || fd > FOPEN_MAX)
+	bytes_read = 1;
+	if (BUFFER_SIZE < 1 || fd < 0 || fd >= FOPEN_MAX)
 		return (NULL);
-	temp[fd] = temp_getter(fd, temp[fd]);
-	if (!temp[fd])
-		return (NULL);
-	line = line_extractor(temp[fd]);
-	if (!line)
+	temp = ft_strchr(NULL, NULL, buffer[fd], 1);
+	while (bytes_read > 0 && !ft_strchr(temp, NULL, NULL, 0))
 	{
-		free(temp[fd]);
-		temp[fd] = NULL;
-		return (NULL);
+		old_buffer = temp;
+		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
+		if (bytes_read < 0)
+			return (free(temp), NULL);
+		buffer[fd][bytes_read] = '\0';
+		temp = ft_strjoin(temp, buffer[fd]);
+		free(old_buffer);
 	}
-	temp[fd] = temp_destroyer(temp[fd]);
-	return (line);
+	if (!temp || *temp == '\0')
+		return (free(temp), NULL);
+	old_buffer = ft_get_line(temp);
+	return (free(temp), old_buffer);
 }
-/*int main(void)
+/* int	main(void)
 {
-	int fd1 = open("arquivo1.txt", O_RDONLY);
-	int fd2 = open("arquivo2.txt", O_RDONLY);
-	int fd3 = open("arquivo3.txt", O_RDONLY);
-	char *linha1;
-	char *linha2;
-	char *linha3;
+	int	fd1 = open("arquivo1.txt", O_RDONLY);
+	int	fd2 = open("arquivo2.txt", O_RDONLY);
+	int	fd3 = open("arquivo3.txt", O_RDONLY);
+	char *line1;
+	char *line2;
+	char *line3;
 
 	while (1)
 	{
-		linha1 = get_next_line(fd1);
-		linha2 = get_next_line(fd2);
-		linha3 = get_next_line(fd3);
+		line1 = get_next_line(fd1);
+		line2 = get_next_line(fd2);
+		line3 = get_next_line(fd3);
 
-		if (!linha1 && !linha2)
-			break ;
-
-		if (linha1)
+		if (!line1 && !line2 && !line3 )
+			break;
+		if (line1)
 		{
-			printf("arq1_ %s", linha1);
-			free(linha1);
+			printf("arq1_ %s", line1);
+			free(line1);
 		}
-		if (linha2)
+		if (line2)
 		{
-			printf("arq2_ %s", linha2);
-			free(linha2);
+			printf("arq2_ %s", line2);
+			free(line2);
 		}
-		if (linha3)
+		if(line3)
 		{
-			printf("arq3_ %s", linha3);
-			free(linha3);
+			printf("arq3_ %s", line3);
+			free(line3);
 		}
 	}
-
-	close(fd3);
 	close(fd1);
 	close(fd2);
+	close(fd3);
 	return (0);
-}*/
+} */
