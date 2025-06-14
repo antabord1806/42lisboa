@@ -38,12 +38,12 @@ char	*get_next_line(int fd)
 	old_buffer = ft_get_line(temp);
 	return (free(temp), old_buffer);
 }
-/* int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line;
 
-	fd = open("arquivo1.txt", O_RDONLY);
+	fd = open("only_nl.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Erro ao abrir o arquivo");
@@ -56,4 +56,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
-} */
+}
