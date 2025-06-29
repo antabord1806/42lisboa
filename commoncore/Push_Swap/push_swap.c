@@ -3,26 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-06-27 15:07:18 by antabord          #+#    #+#             */
-/*   Updated: 2025-06-27 15:07:18 by antabord         ###   ########.fr       */
+/*   Created: 2025/06/29 18:51:49 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/29 18:51:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	push_swap(int ac, char *av)
+int push_swap(int argc, char **argv)
 {
-	int i;
+    t_stack *a;
+    t_stack *b;
+    int     str;
 
-	i = 1;
-	if (ac <= 1)
-		return (ft_err(void));
-	while (i < ac)
-	{
-		if (!parsing(av[i]))
-			return (ft_err(void));
-		
-	}
+    if (argc < 2)
+        return (ft_err(void));
+    str = checker(argc, **argv);
+    
 }

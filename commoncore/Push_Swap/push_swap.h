@@ -13,11 +13,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
 
-char	push_swap(int ac, char *av);
+void	push_swap(int ac, char **av);
 int		parsing(char *av);
 void	ft_err(void);
 

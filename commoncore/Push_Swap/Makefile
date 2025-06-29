@@ -2,8 +2,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -fclean
 
-SRC = ft_err.c push_swap.c parsing.c 
-NAME = push
+SRC = ft_err.c .c parsing.c 
+NAME = push_swap
 
 OBJ = $(SRC:.c=.o)
 
