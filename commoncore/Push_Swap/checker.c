@@ -12,7 +12,14 @@
 
 #include "push_swap.h"
 
-int checker(int ac, char **av)
+int	is_dupl(char **av)
 {
-    
+	
+}
+
+int checker(int ac, char *av)
+{
+	char	**tmp_arr;
+	
+    **tmp_arr = ft_split(*av, ' ');
 }

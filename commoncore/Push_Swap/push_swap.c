@@ -20,6 +20,6 @@ int push_swap(int argc, char **argv)
 
     if (argc < 2)
         return (ft_err(void));
-    str = checker(argc, **argv);
+    str = checker(argc, *argv);
     
 }
