@@ -16,9 +16,32 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
+# include "../libft/libft.h"
 
-void	push_swap(int ac, char **av);
-int		parsing(char *av);
+typedef struct s_stack
+{
+	int				number;
+	int				content;
+	int				idx;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}		t_stack;
+
+//aux functions
+int		ft_atoi(char *s);
+int		ft_isdigit(int c);
+char	*ft_strjoin(char *s1, char *s2);
+
+//main & arg breakdown
+int		push_swap(int argc, char **argv);
+char	**join_args(int ac, char **av);
 void	ft_err(void);
+
+//adding to lst & parsing
+void	parser(t_stack *stack, char *av[]);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	filters(t_stack *stack);
+
 
 #endif

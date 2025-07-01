@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-06-27 14:55:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-06-27 14:55:57 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-14 11:10:03 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-14 11:10:03 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdio.h>
 
-void ft_err(void)
+int	ft_isalnum(int c)
 {
-    fprintf(stderr, "Error\n");
-    exit(EXIT_FAILURE);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
+
+/*int main(void)
+{
+	printf("%d", ft_isalnum(56));
+	return (0);
+}*/

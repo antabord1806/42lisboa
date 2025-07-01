@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-06-27 14:55:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-06-27 14:55:57 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-14 11:09:53 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-14 11:09:53 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdio.h>
 
-void ft_err(void)
+int	ft_isdigit(int c)
 {
-    fprintf(stderr, "Error\n");
-    exit(EXIT_FAILURE);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
+
+/*int main(void)
+{
+	printf("%d", ft_isdigit(50));
+	return (0);
+}*/

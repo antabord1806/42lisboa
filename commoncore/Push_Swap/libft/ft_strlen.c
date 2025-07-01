@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-06-27 14:55:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-06-27 14:55:57 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-14 11:36:50 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-14 11:36:50 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_err(void)
+int	ft_strlen(const char *str)
 {
-    fprintf(stderr, "Error\n");
-    exit(EXIT_FAILURE);
+	int	l;
+
+	l = 0;
+	while (str[l])
+	{
+		l++;
+	}
+	return (l);
 }
+
+/*int	main(void)
+{
+	char str1[] = "ola mundo";
+	char str2[] = "ola mundo";
+	strlen(str1);
+	ft_strlen(str2);
+	printf("%d\n", strlen(str1));
+	printf("%d", ft_strlen(str2));
+	return (0);
+}*/

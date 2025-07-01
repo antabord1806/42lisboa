@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_err.c                                           :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-06-27 14:55:57 by antabord          #+#    #+#             */
-/*   Updated: 2025-06-27 14:55:57 by antabord         ###   ########.fr       */
+/*   Created: 2025-04-16 10:32:26 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-16 10:32:26 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void ft_err(void)
+int	ft_tolower(int c)
 {
-    fprintf(stderr, "Error\n");
-    exit(EXIT_FAILURE);
+	int	a;
+
+	if (c >= 'A' && c <= 'Z')
+	{
+		a = c + 32;
+		return (a);
+	}
+	else
+		return (c);
 }
+
+/*int main(void)
+{
+	printf("%d\n", ft_tolower('a'));
+	printf("%d\n", tolower('a'));
+}*/

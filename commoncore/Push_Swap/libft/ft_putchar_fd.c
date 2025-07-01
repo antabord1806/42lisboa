@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 19:06:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/29 19:06:21 by marvin           ###   ########.fr       */
+/*   Created: 2025-04-22 19:10:58 by antabord          #+#    #+#             */
+/*   Updated: 2025-04-22 19:10:58 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	is_dupl(char **av)
+void	ft_putchar_fd(char c, int fd)
 {
-	
-}
-
-int checker(int ac, char *av)
-{
-	char	**tmp_arr;
-	
-    **tmp_arr = ft_split(*av, ' ');
+	write(fd, &c, 1);
 }

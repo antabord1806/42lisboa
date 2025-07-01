@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 18:51:49 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/29 18:51:49 by marvin           ###   ########.fr       */
+/*   Created: 2025/04/22 09:51:02 by marvin            #+#    #+#             */
+/*   Updated: 2025/04/22 09:51:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_striteri(char const *s, void (*f)(unsigned int, char *))
 {
-	int		i;
-	char	**args;
-	t_stack	stack;
+	unsigned int	i;
 
-	i = 1;
-	if (argc <= 1)
-		ft_err();
-	args = join_args(argc, argv);
-	parser(&stack, args);
-	filters(stack);
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
+	{
+		f(i, (char *)&s[i]);
+		i++;
+	}
 }
+
+/*void    ft_uppercase(unsigned int i, char *c)
+{
+	if(i > 3 && *c >= 'a' && *c <= 'z')
+		*c = *c - 32;
+}
+
+int	main(void)
+{
+	char str[] = "ola tudo bem";
+	ft_striteri(str, ft_uppercase);
+	printf("%s\n", str);
+	return (0);
+}*/
