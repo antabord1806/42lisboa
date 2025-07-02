@@ -27,7 +27,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int main(void)
+/* int main(void)
 {
 	const char  s[] = "ola tudo bem";
 	int c = 'u';
@@ -37,3 +37,4 @@ int main(void)
 	//printf("%s\n", res2);
 	return (0);
 }
+ */

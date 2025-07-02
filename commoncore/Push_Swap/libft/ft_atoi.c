@@ -36,7 +36,7 @@ int	ft_atoi(char *s)
 	}
 	return (sig * res);
 }
-int main(void)
+/* int main(void)
 {
 	char  s[] = "      -16125h";
 	int res1 = ft_atoi(s);
@@ -44,4 +44,4 @@ int main(void)
 	printf("%d\n", res1);
 	printf("%s\n", res2);
 	return (0);
-}
+} */
