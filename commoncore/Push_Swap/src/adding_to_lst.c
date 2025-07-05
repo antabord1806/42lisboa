@@ -46,15 +46,17 @@ char	**join_args(int ac, char **av)
 			ft_err();
 		}
 		str = ft_strjoin(str, tmp_str);
-		freedom(tmp_str);
 		if (!str)
-		{
-			freedom(str);
 			ft_err();
-		}
 	}
+	if (!ft_isdigit_mod(str))
+	{
+		freedom(str);
+		ft_err();
+	}	
 	return (str);
 }
+
 int	ft_isduplicate(t_stack *stack)
 {
 	t_stack	*current;
@@ -67,44 +69,35 @@ int	ft_isduplicate(t_stack *stack)
 		while (checking != NULL)
 		{
 			if (current->number == checking->number)
-				return (1);
+				ft_err();
 			checking = checking->next;
 		}
 		current = current->next;
 	}
-	return (0);
+	return (1);
 }
-void	filters(t_stack *stack)
+void	parser(t_stack **stack, char **av)
 {
-	while (stack != NULL)
-	{
-		if (ft_isdigit(stack->number))
-			ft_err();
-		stack = stack->next;
-	}
-	if (ft_isduplicate(stack))
-		ft_err();
-}
-
-void	parser(t_stack **stack, char *av[])
-{
-	size_t		i;
-	size_t	len;
+	int		i;
+	long	value;
 	t_stack	*new;
 
-	len = 0;
-	i = -1;
-	while (av[++i])
-		len++;
 	i = 0;
-	while (i < len)
+	while (av[i])
 	{
 		new = malloc(sizeof(t_stack));
 		if (!new)
-			return ;
-		new->number = ft_atoi(av[i]);
+		{
+			freedom_stack(stack);
+			ft_err();
+		}
+		value = ft_atol(av[i]);
+		if (value > INT_MAX || value < INT_MIN)
+			ft_err();
+		new->number = value;
 		new->next = NULL;
 		ft_lstadd_back_mod(stack, new);
 		i++;
 	}
 }
+

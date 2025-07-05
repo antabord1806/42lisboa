@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int		count_str(char **arr)
+static int	count_str(char **arr)
 {
 	int	len;
 
-	len = -1;
+	len = 0;
 	while (arr && arr[len])
 		len++;
 	return (len);
@@ -24,27 +24,25 @@ int		count_str(char **arr)
 
 char	**ft_strjoin(char **s1, char **s2)
 {
-	int				i;
-	char			**result;
-	unsigned int	total;
+	int		i;
+	char	**result;
+	size_t	len1;
+	size_t	len2;
 
-	i = 0;
-	total = count_str(s1) + count_str(s2);
-	result = malloc(sizeof(char *) * (total + 1));
+	i = -1;
+	len1 = count_str(s1);
+	len2 = count_str(s2);
+	result = malloc(sizeof(char *) * (len1 + len2 + 1));
 	if (!result)
 		return (NULL);
-	while (i < count_str(s1))
-	{
+	while (++i < (int)len1)
 		result[i] = ft_strdup(s1[i]);
-		i++;
-	}
-	i = 0;
-	while (i < count_str(s2))
-	{
-		result[i + count_str(s1)] = ft_strdup(s2[i]);
-		i++;
-	}
-	result[count_str(s1) + count_str(s2)] = '\0';
+	i = -1;
+	while (++i < (int)len2)
+		result[i + len1] = ft_strdup(s2[i]);
+	result[len1 + len2] = NULL;
+	freedom(s1);
+	freedom(s2);
 	return (result);
 }
 

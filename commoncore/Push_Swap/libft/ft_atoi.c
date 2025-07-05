@@ -12,30 +12,27 @@
 
 #include "libft.h"
 
-int	ft_atoi(char *s)
+long	ft_atol(char *str)
 {
-	int	res;
-	int	sig;
-	int	i;
+	long	result = 0;
+	int		sign = 1;
 
-	i = 0;
-	sig = 1;
-	res = 0;
-	while ((s[i] >= 9 && s[i] <= 13) || (s[i] == 32))
-		i++;
-	if (s[i] == '+' || s[i] == '-')
+	while ((*str == ' ' || (*str >= 9 && *str <= 13)))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (s[i] == '-')
-			sig = sig * -1;
-		i++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	while (s[i] >= '0' && s[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		res = (res * 10) + s[i] - '0';
-		i++;
+		result = result * 10 + (*str - '0');
+		str++;
 	}
-	return (sig * res);
+	return (result * sign);
 }
+
 /* int main(void)
 {
 	char  s[] = "      -16125h";

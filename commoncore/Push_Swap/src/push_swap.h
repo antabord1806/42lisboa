@@ -30,8 +30,7 @@ typedef struct s_stack
 }		t_stack;
 
 //aux functions
-int		ft_atoi(char *s);
-int		ft_isdigit(int c);
+long	ft_atol(char *str);
 char	**ft_strjoin(char **s1, char **s2);
 
 //main & arg breakdown
@@ -41,11 +40,11 @@ char	**join_args(int ac, char **av);
 //error & free
 void	ft_err(void);
 void	freedom(char **str);
+void	freedom_stack(t_stack **stack);
 
 //adding to lst & parsing
 void	parser(t_stack **stack, char *av[]);
-void	ft_lstadd_back_mod(t_stack **lst, t_stack *new);
-void	filters(t_stack *stack);
-
+int		ft_isduplicate(t_stack *stack);
+int		ft_isdigit_mod(char **nbr);
 
 #endif

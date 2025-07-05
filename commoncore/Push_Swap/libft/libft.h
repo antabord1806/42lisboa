@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "../src/push_swap.h"
 
 typedef struct s_list
 {
@@ -26,7 +27,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_atoi(char *s);
+void	ft_err(void);
+long	ft_atol(char *str);
 void	ft_bzero(void *s, size_t n);
 int		ft_isascii(int c);
 int		ft_isalpha(int c);

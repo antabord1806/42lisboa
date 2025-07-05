@@ -15,18 +15,24 @@
 int	main(int argc, char **argv)
 {
 	char	**args;
-	t_stack	*stack;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_stack	*temp;
 
-	stack = NULL;
+	stack_b = NULL;
+	stack_a = NULL;
 	if (argc <= 1)
 		ft_err();
 	args = join_args(argc, argv);
-	parser(&stack, args);
-	filters(stack);
-	while (stack)
+	parser(&stack_a, args);
+	ft_isduplicate(stack_a);
+	temp = stack_a;
+	while (temp)
 	{
-		printf("%d\n", stack->number);
-		stack = stack->next;
+		printf("%d\n", temp->number);
+		temp = temp->next;
 	}
+	freedom(args);
+	freedom_stack(&stack_a);
 	return (0);
 }
