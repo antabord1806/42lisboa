@@ -1,58 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repeat_alpha.c                                     :+:      :+:    :+:   */
+/*   rotone.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-07-07 16:18:40 by antabord          #+#    #+#             */
-/*   Updated: 2025-07-07 16:18:40 by antabord         ###   ########.fr       */
+/*   Created: 2025-07-07 17:46:48 by antabord          #+#    #+#             */
+/*   Updated: 2025-07-07 17:46:48 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+ #include <unistd.h>
 
-#include <unistd.h>
-
-void	repeat_alpha(char *s)
-{
+ void	rotone(char *s)
+ {
 	int	i = 0;
 	int	c;
+
 	while (s[i])
 	{
-		if (s[i] >= 'A' && s[i] <= 'Z')
-		{
-			c = s[i] - 64;
-			while (c != 0)
-			{
-					write(1, &s[i], 1);
-					c--;
-			}
-			c = 0;
-		}
 		if (s[i] >= 'a' && s[i] <= 'z')
 		{
-			c = s[i] - 96;
-			while (c != 0)
+			c = s[i] + 1;
+			if (c > 'z')
 			{
-				write(1, &s[i], 1);
-				c--;
+				c = s[i] - 1;
+				write(1, &c, 1);
 			}
-			c = 0;
+			else
+				write(1, &c, 1);
+		}
+		else if (s[i] >= 'A' && s[i] <= 'Z')
+		{
+			c = s[i] + 1;
+			if (c > 'Z')
+			{
+				c = s[i] - 1;
+				write(1, &c, 1);
+			}
+			else
+				write(1, &c, 1);
 		}
 		else
 			write(1, &s[i], 1);
 		i++;
 	}
-		
-}
+ }
 
-int		main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		write(1, "\n", 1);
-		return (0);
-	}
-	repeat_alpha(av[1]);
+ int	main(int ac, char **av)
+ {
+	if (ac == 2)
+		rotone(av[1]);
 	write(1, "\n", 1);
 	return (0);
-}
+ }
