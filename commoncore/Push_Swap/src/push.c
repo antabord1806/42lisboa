@@ -34,7 +34,7 @@ void	push_a(t_stack **head_b, t_stack **head_a)
 	write(1, "pa\n", 3);
 }
 
-void	push_a(t_stack **head_a, t_stack **head_b)
+void	push_b(t_stack **head_a, t_stack **head_b)
 {
 	push(head_a, head_b);
 	write(1, "pb\n", 3);

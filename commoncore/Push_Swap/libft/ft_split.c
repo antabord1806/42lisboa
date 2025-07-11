@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void	ft_free_all(char **arr_aloc)
+/* static void	ft_free_all(char **arr_aloc)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ static void	ft_free_all(char **arr_aloc)
 		i++;
 	}
 	free(arr_aloc);
-}
+} */
 
 static size_t	ft_count_words(char const *s, char c)
 {

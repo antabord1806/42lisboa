@@ -23,7 +23,6 @@
 typedef struct s_stack
 {
 	int				number;
-	int				content;
 	int				idx;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -46,5 +45,33 @@ void	freedom_stack(t_stack **stack);
 void	parser(t_stack **stack, char *av[]);
 int		ft_isduplicate(t_stack *stack);
 int		ft_isdigit_mod(char **nbr);
+void	add_index(t_stack *stack);
+
+//processing stack
+int		check_if_sorted(t_stack *stack);
+void	check_if_3(t_stack *stack_a);
+void	stack_is_2(t_stack *stack_a);
+void	stack_is_3(t_stack *stack_a);
+
+//operations
+	//rotate
+		void	rotate_a(t_stack **head);
+		void	rotate_b(t_stack **head);
+		void	rotate_ab(t_stack **head_a, t_stack **head_b);
+	//reverse rotate
+		void	reverse_rotate_a(t_stack **head);
+		void	reverse_rotate_b(t_stack **head);
+		void	reverse_rotate_ab(t_stack **head_a, t_stack **head_b);
+	//push
+		void	push_a(t_stack **head_b, t_stack **head_a);
+		void	push_b(t_stack **head_a, t_stack **head_b);
+	//swap
+		void	swap_a(t_stack **head_a);
+		void	swap_b(t_stack **head_b);
+		void	swap_ab(t_stack **head_a, t_stack **head_b);
+
+//algo implementation -- turksort
+void	push_loop(t_stack *stack_a, t_stack *stack_b);
+
 
 #endif
