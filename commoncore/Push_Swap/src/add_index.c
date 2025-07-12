@@ -12,29 +12,32 @@
 
 #include "push_swap.h"
 
-void	add_index(t_stack *stack)
+void	add_index(t_stack **stack)
 {
 	int index;
 	t_stack *curr;
 
 	index = 0;
-	curr = stack;
-	while (curr->next != NULL)
+	curr = *stack;
+	while (curr->next)
 	{
 		curr->idx = index;
 		curr = curr->next;
 		index++;
 	}
 }
-int		check_if_sorted(t_stack *stack)
+int		check_if_sorted(t_stack **stack)
 {
-	if (stack->next == NULL)
+	t_stack *tmp;
+
+	tmp = *stack;
+	if (tmp->next == NULL)
 		return (1);
-	while (stack->number < stack->next->number)
+	while (tmp->number < tmp->next->number)
 	{
-		if (stack->number > stack->next->number)
+		if (tmp->number > tmp->next->number)
 			return (0);
-		stack = stack->next;
+		tmp = tmp->next;
 	}
 	return (1);
 }

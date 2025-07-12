@@ -15,19 +15,27 @@
 int	main(int argc, char **argv)
 {
 	char	**args;
-	t_stack	*stack_a;
+	t_stack	**stack_a;
+	//t_stack	**stack_b;
+	t_stack	*tmp;
 
 	stack_a = NULL;
 	if (argc <= 1)
 		ft_err();
 	args = join_args(argc, argv);
-	parser(&stack_a, args);
+	parser(stack_a, args);
 	ft_isduplicate(stack_a);
 	add_index(stack_a);
 	if (check_if_sorted(stack_a))
 		return (0);
 	check_if_3(stack_a);
+	tmp = *stack_a;
+	while (tmp->next)
+	{
+		printf("%d\n", tmp->number);
+		tmp = tmp->next;
+	}
 	freedom(args);
-	freedom_stack(&stack_a);
+	freedom_stack(stack_a);
 	return (0);
 }

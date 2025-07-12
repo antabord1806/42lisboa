@@ -5,15 +5,16 @@ RM = rm -f
 
 NAME = push_swap
 LIB_DIR = libft
-LIB = $(LIB_DIR)/lift.a
+LIB = $(LIB_DIR)/libft.a
 
-SRC = src/adding_to_lst.c src/ft_err.c src/push_swap.c src/stack_inital.c \
+SRC = src/adding_to_lst.c src/ft_err.c src/push_swap.c src/add_index.c src/check_stack.c \
+      src/rotate.c src/push.c src/reverse_rotate.c src/swap.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(LIB) $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)
 
 $(LIB):

@@ -43,15 +43,15 @@ void	freedom_stack(t_stack **stack);
 
 //adding to lst & parsing
 void	parser(t_stack **stack, char *av[]);
-int		ft_isduplicate(t_stack *stack);
+int		ft_isduplicate(t_stack **stack);
 int		ft_isdigit_mod(char **nbr);
-void	add_index(t_stack *stack);
+void	add_index(t_stack **stack);
 
 //processing stack
-int		check_if_sorted(t_stack *stack);
-void	check_if_3(t_stack *stack_a);
-void	stack_is_2(t_stack *stack_a);
-void	stack_is_3(t_stack *stack_a);
+int		check_if_sorted(t_stack **stack);
+void	check_if_3(t_stack **stack_a);
+void	stack_is_2(t_stack **stack_a);
+void	stack_is_3(t_stack **stack_a);
 
 //operations
 	//rotate

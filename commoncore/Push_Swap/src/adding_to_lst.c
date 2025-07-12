@@ -57,12 +57,12 @@ char	**join_args(int ac, char **av)
 	return (str);
 }
 
-int	ft_isduplicate(t_stack *stack)
+int	ft_isduplicate(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*checking;
 
-	current = stack;
+	current = *stack;
 	while (current != NULL)
 	{
 		checking = current->next;

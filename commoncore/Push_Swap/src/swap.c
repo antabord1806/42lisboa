@@ -32,9 +32,9 @@ void	swap_b(t_stack **head_b)
 	swap(head_b);
 	write(1, "sb\n", 3);
 }
-void	swap_ab(t_stack **head_a, t_stack **head_b)
+/* void	swap_ab(t_stack **head_a, t_stack **head_b)
 {
 	swap(head_a);
 	swap(head_a);
 	write(1, "ss\n", 3);
-}
+} */

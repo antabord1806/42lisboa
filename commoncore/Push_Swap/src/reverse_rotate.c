@@ -15,7 +15,7 @@
 void	reverse_rotate(t_stack **head)
 {
 	t_stack		*tail;
-	if (*head = NULL || (*head)->next==NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	while(tail->next != NULL)
 		tail = tail->next;
