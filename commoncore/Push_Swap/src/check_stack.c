@@ -47,7 +47,7 @@ void	stack_is_3(t_stack **stack)
 	check_if_sorted(stack);
 }
 
-void	check_if_3(t_stack **stack_a)
+int	check_if_3(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *tmp;
 	int	i;
@@ -64,7 +64,10 @@ void	check_if_3(t_stack **stack_a)
 	else if(i == 2)
 		stack_is_2(stack_a);
 	else if(i == 3)
+	{
 		stack_is_3(stack_a);
-/* 	else
-		push_loop(stack_a, stack_b); */
+		return (1);
+	}
+	push_loop(stack_a, stack_b);
+	return (0);
 }

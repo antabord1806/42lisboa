@@ -24,6 +24,7 @@ typedef struct s_stack
 {
 	int				number;
 	int				idx;
+	int				target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }		t_stack;
@@ -49,7 +50,7 @@ void	add_index(t_stack **stack);
 
 //processing stack
 int		check_if_sorted(t_stack **stack);
-void	check_if_3(t_stack **stack_a);
+int		check_if_3(t_stack **stack_a, t_stack **stack_b);
 void	stack_is_2(t_stack **stack_a);
 void	stack_is_3(t_stack **stack_a);
 
