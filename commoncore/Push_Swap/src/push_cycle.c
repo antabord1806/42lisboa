@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+int    cost_analysis(t_stack *ptr, t_stack **stack_a, t_stack **stack_b)
+{
+    int cost;
+    int target_setup;
+
+    while ((*stack_a) != ptr)
+    {
+        ptr = ptr->prev;
+        cost++;
+    }
+    cost = cost + target_pos(stack_a, stack_b);
+    cost++;
+    return (cost);
+}
+
 void    push_loop(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *ptr;
@@ -29,7 +44,7 @@ void    push_loop(t_stack **stack_a, t_stack **stack_b)
 
     while (ptr->next)
     {
-        cost = cost_analysis(stack_a);
+        cost = cost_analysis(ptr, stack_a, stack_b);
         if (cost < cheapest)
         {
             cheapest = cost;
