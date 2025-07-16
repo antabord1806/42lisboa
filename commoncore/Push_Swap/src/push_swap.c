@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 	add_index(stack_a);
 	if (check_if_sorted(stack_a))
 		return (0);
-	check_if_3(stack_a);
-
+	check_if_3(stack_a, stack_b);
+	
 	freedom(args);
 	freedom_stack(stack_a);
 	return (0);

@@ -15,7 +15,12 @@
 void    push_loop(t_stack **stack_a, t_stack **stack_b)
 {
     t_stack *ptr;
+    t_stack *cheapest_node;
+    int cheapest;
+    int cost;
 
+    cheapest_node = NULL;
+    cheapest = INT_MAX;
     ptr = *stack_a;
     push_b(stack_a, stack_b);
     if (check_if_3(stack_a, stack_b))
@@ -24,8 +29,14 @@ void    push_loop(t_stack **stack_a, t_stack **stack_b)
 
     while (ptr->next)
     {
-        cost_analysis(stack_a);
+        cost = cost_analysis(stack_a);
+        if (cost < cheapest)
+        {
+            cheapest = cost;
+            cheapest_node = ptr;
+        }
         ptr = ptr->next;
     }
-    
+    if (cheapest_node)
+        move_cheapest_node(cheapest_node, stack_a, stack_b);
 }
