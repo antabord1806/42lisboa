@@ -19,21 +19,20 @@ void	add_index(t_stack **stack)
 
 	index = 0;
 	curr = *stack;
-	while (curr->next)
+	while (curr)
 	{
 		curr->idx = index;
 		curr = curr->next;
 		index++;
 	}
 }
-int		check_if_sorted(t_stack **stack)
+
+int	check_if_sorted(t_stack **stack)
 {
 	t_stack *tmp;
-
+	
 	tmp = *stack;
-	if (tmp->next == NULL)
-		return (1);
-	while (tmp->number < tmp->next->number)
+	while (tmp && tmp->next)
 	{
 		if (tmp->number > tmp->next->number)
 			return (0);
@@ -41,3 +40,19 @@ int		check_if_sorted(t_stack **stack)
 	}
 	return (1);
 }
+
+int	lst_size(t_stack **stack)
+{
+	t_stack *ptr;
+	int i;
+
+	i = 0;
+	ptr = *stack;
+	while (ptr)
+	{
+		ptr = ptr->next;
+		i++;
+	}
+	return (i);
+}
+

@@ -24,7 +24,8 @@ typedef struct s_stack
 {
 	int				number;
 	int				idx;
-	int				target;
+	int				chaepest;
+	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }		t_stack;
@@ -72,7 +73,7 @@ void	stack_is_3(t_stack **stack_a);
 		void	swap_ab(t_stack **head_a, t_stack **head_b);
 
 //algo implementation -- turksort
-void	push_loop(t_stack *stack_a, t_stack *stack_b);
+void	push_loop(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif

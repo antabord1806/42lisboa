@@ -41,6 +41,24 @@ void	freedom_stack(t_stack **stack)
 	}
 }
 
+int	min_max(t_stack **stack, int value)
+{
+	t_stack *ptr;
+	int		max;
+	int		min;
+
+	max = 0;
+	min = 0;
+	ptr = *stack;
+		while (ptr)
+		{
+			if (ptr->number > max)
+				max = ptr->number;
+			ptr = ptr->next;
+		}
+		return (max);
+}
+
 int	ft_isdigit_mod(char **nbr)
 {
 	int	i;
