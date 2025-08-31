@@ -18,7 +18,7 @@ void	stack_is_2(t_stack **stack)
 
 	tmp = *stack;
 	if (tmp->number < tmp->next->number)
-		check_if_sorted(stack);
+		check_if_sorted(stack, 1);
 	else
 		swap_a(stack);
 }
@@ -44,23 +44,23 @@ void	stack_is_3(t_stack **stack)
 	}
 	else if (a < b && b > c && a > c)
 		reverse_rotate_a(stack);
-	check_if_sorted(stack);
+	check_if_sorted(stack, 1);
 }
 
-int	check_if_3(t_stack **stack_a, t_stack **stack_b)
+int	check_if_3(t_stack **stack_a)
 {
 	t_stack *tmp;
 	int	i;
 
-	i = 1;
+	i = 0;
 	tmp = *stack_a;
-	while (tmp->next)
+	while (tmp)
 	{
 		tmp = tmp->next;
 		i++;
 	}
-	if (i == 1)
-		check_if_sorted(stack_a);
+	if (i <= 1)
+		return (0);
 	else if(i == 2)
 		stack_is_2(stack_a);
 	else if(i == 3)
@@ -68,6 +68,5 @@ int	check_if_3(t_stack **stack_a, t_stack **stack_b)
 		stack_is_3(stack_a);
 		return (1);
 	}
-	push_loop(stack_a, stack_b);
 	return (0);
 }

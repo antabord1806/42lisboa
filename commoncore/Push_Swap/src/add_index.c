@@ -27,14 +27,23 @@ void	add_index(t_stack **stack)
 	}
 }
 
-int	check_if_sorted(t_stack **stack)
+int	check_if_sorted(t_stack **stack, int nbr)
 {
 	t_stack *tmp;
 	
 	tmp = *stack;
+	if (nbr == 0)
+	{
+
+	}
 	while (tmp && tmp->next)
 	{
-		if (tmp->number > tmp->next->number)
+		if (tmp->number > tmp->next->number && nbr == 0)
+		{
+			reverse_rotate_a(stack);
+			check_if_sorted(stack, 0);
+		}
+		else if (tmp->number > tmp->next->number && nbr != 0)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -56,3 +65,34 @@ int	lst_size(t_stack **stack)
 	return (i);
 }
 
+t_stack *no_target_max(t_stack **stack_b)
+{
+    t_stack *ptr;
+    t_stack *target;
+
+    ptr = *stack_b;
+    target = ptr;
+    while (ptr)
+    {
+        if (ptr->number < target->number)
+            target = ptr;
+        ptr = ptr->next;
+    }
+    return (target);
+}
+
+t_stack *no_target_min(t_stack **stack_a)
+{
+    t_stack *ptr;
+    t_stack *target;
+
+    ptr = *stack_a;
+    target = ptr;
+    while (ptr)
+    {
+        if (ptr->number < target->number)
+            target = ptr;
+        ptr = ptr->next;
+    }
+    return (target);
+}

@@ -1,16 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   adding_to_lst.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 19:06:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/29 19:06:21 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
+
+long	ft_atol(char *str)
+{
+	long	result = 0;
+	int		sign = 1;
+
+	while ((*str == ' ' || (*str >= 9 && *str <= 13)))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}
 
 void	ft_lstadd_back_mod(t_stack **lst, t_stack *new)
 {
