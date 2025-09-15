@@ -97,13 +97,15 @@ void	parser(t_stack **stack, char **av)
 	{
 		new = malloc(sizeof(t_stack));
 		if (!new)
+			ft_err();
+		value = ft_atol(av[i]);
+		if (value > INT_MAX || value < INT_MIN || is_it_too_big(value))
 		{
 			freedom_stack(stack);
+			free(new);
+			freedom(av);
 			ft_err();
-		}
-		value = ft_atol(av[i]);
-		if (value > INT_MAX || value < INT_MIN)
-			ft_err();
+		}	
 		new->number = value;
 		new->next = NULL;
 		ft_lstadd_back_mod(stack, new);

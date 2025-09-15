@@ -17,6 +17,21 @@ void	ft_err(void)
 	fprintf(stderr, "Error\n");
 	exit(EXIT_FAILURE);
 }
+
+int	is_it_too_big(int nbr)
+{
+	int i;
+
+	i = 0;
+	while (nbr)
+	{
+		nbr = nbr / 10;
+		i++;
+	}
+	if (i > 10)
+		return (1);
+	return (0);
+}
 void	freedom(char **arr)
 {
 	int	i = 0;

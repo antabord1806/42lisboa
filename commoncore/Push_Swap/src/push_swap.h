@@ -23,6 +23,8 @@ typedef struct s_stack
 {
 	int				number;
 	int				idx;
+	int				double_rot;
+	int				double_revrse;
 	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -46,6 +48,7 @@ void	freedom_stack(t_stack **stack);
 
 //adding to lst & parsing
 void	parser(t_stack **stack, char *av[]);
+int		is_it_too_big(int nbr);
 int		ft_isduplicate(t_stack **stack);
 int		ft_isdigit_mod(char **nbr);
 void	add_index(t_stack **stack);

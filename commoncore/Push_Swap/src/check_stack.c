@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_stack.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025-07-11 13:53:34 by antabord          #+#    #+#             */
 /*   Updated: 2025-07-11 13:53:34 by antabord         ###   ########.fr       */
 /*                                                                            */
@@ -12,15 +15,16 @@
 
 #include "push_swap.h"
 
-void	stack_is_2(t_stack **stack)
+
+void	stack_is_2(t_stack **stack_a)
 {
 	t_stack *tmp;
 
-	tmp = *stack;
+	tmp = *stack_a;
 	if (tmp->number < tmp->next->number)
-		check_if_sorted(stack, 1);
+		check_if_sorted(stack_a, 1);
 	else
-		swap_a(stack);
+		swap_a(stack_a);
 }
 void	stack_is_3(t_stack **stack)
 {
@@ -44,13 +48,14 @@ void	stack_is_3(t_stack **stack)
 	}
 	else if (a < b && b > c && a > c)
 		reverse_rotate_a(stack);
-	check_if_sorted(stack, 1);
+	if (check_if_sorted(stack, 1))
+		return ;
 }
 
 int	check_if_3(t_stack **stack_a)
 {
 	t_stack *tmp;
-	int	i;
+	int i;
 
 	i = 0;
 	tmp = *stack_a;
@@ -61,9 +66,12 @@ int	check_if_3(t_stack **stack_a)
 	}
 	if (i <= 1)
 		return (0);
-	else if(i == 2)
+	else if (i == 2)
+	{
 		stack_is_2(stack_a);
-	else if(i == 3)
+		return (1);
+	}
+	else if (i == 3)
 	{
 		stack_is_3(stack_a);
 		return (1);

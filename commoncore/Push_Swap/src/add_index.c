@@ -32,17 +32,10 @@ int	check_if_sorted(t_stack **stack, int nbr)
 	t_stack *tmp;
 	
 	tmp = *stack;
-	if (nbr == 0)
-	{
-
-	}
 	while (tmp && tmp->next)
 	{
 		if (tmp->number > tmp->next->number && nbr == 0)
-		{
 			reverse_rotate_a(stack);
-			check_if_sorted(stack, 0);
-		}
 		else if (tmp->number > tmp->next->number && nbr != 0)
 			return (0);
 		tmp = tmp->next;
