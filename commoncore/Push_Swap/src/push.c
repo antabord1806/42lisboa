@@ -28,13 +28,13 @@ void push(t_stack **donator, t_stack **reciever)
 	tmp->prev = NULL;
 	*reciever = tmp;
 }
-void	push_a(t_stack **head_b, t_stack **head_a)
+void	pa(t_stack **head_b, t_stack **head_a)
 {
 	push(head_b, head_a);
 	write(1, "pa\n", 3);
 }
 
-void	push_b(t_stack **head_a, t_stack **head_b)
+void	pb(t_stack **head_a, t_stack **head_b)
 {
 	push(head_a, head_b);
 	write(1, "pb\n", 3);

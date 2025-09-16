@@ -16,25 +16,24 @@ void move_target_to_top_or_push_b(t_stack *target, t_stack **stack_a, t_stack **
 {
     int size_a;
     
-    size_a = lst_size(stack_a);
     if (nbr == 1)
     {
+        size_a = lst_size(stack_a);
         while (*stack_a != target)
         {
             if (target->idx >= size_a / 2)
-                reverse_rotate_a(stack_a);
+                rra(stack_a);
             else
-                rotate_a(stack_a);
+                ra(stack_a);
         }
-        push_a(stack_b, stack_a);
+        pa(stack_b, stack_a);
         add_index(stack_a);
     }
     else
     {
-        push_b(stack_a, stack_b);
-        if (check_if_3(stack_a))
-            stack_is_3(stack_a);
-        push_b(stack_a, stack_b);
+        pb(stack_a, stack_b);
+        check_if_3(stack_a);
+        pb(stack_a, stack_b);
     }
 }
 

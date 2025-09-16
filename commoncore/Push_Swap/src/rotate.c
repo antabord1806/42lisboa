@@ -26,19 +26,19 @@ void	rotate(t_stack **head)
 	tail->next->next = NULL;
 }
 
-void	rotate_a(t_stack **head)
+void	ra(t_stack **head)
 {
 	rotate(head);
 	write(1, "ra\n", 3);
 }
 
-void	rotate_b(t_stack **head)
+void	rb(t_stack **head)
 {
 	rotate(head);
 	write(1, "rb\n", 3);
 }
 
-void	rotate_ab(t_stack **head_a, t_stack **head_b)
+void	rr(t_stack **head_a, t_stack **head_b)
 {
 	rotate(head_a);
 	rotate(head_b);

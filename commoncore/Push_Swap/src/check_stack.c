@@ -24,7 +24,7 @@ void	stack_is_2(t_stack **stack_a)
 	if (tmp->number < tmp->next->number)
 		check_if_sorted(stack_a, 1);
 	else
-		swap_a(stack_a);
+		sa(stack_a);
 }
 void	stack_is_3(t_stack **stack)
 {
@@ -33,21 +33,21 @@ void	stack_is_3(t_stack **stack)
 	int c = (*stack)->next->next->number;
 
 	if (a > b && b < c && a < c)
-		swap_a(stack);
+		sa(stack);
 	else if (a > b && b > c)
 	{
-		swap_a(stack);
-		reverse_rotate_a(stack);
+		sa(stack);
+		rra(stack);
 	}
 	else if (a > b && b < c && a > c)
-		rotate_a(stack);
+		ra(stack);
 	else if (a < b && b > c && a < c)
 	{
-		swap_a(stack);
-		rotate_a(stack);
+		sa(stack);
+		ra(stack);
 	}
 	else if (a < b && b > c && a > c)
-		reverse_rotate_a(stack);
+		rra(stack);
 	if (check_if_sorted(stack, 1))
 		return ;
 }

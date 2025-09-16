@@ -23,8 +23,8 @@ typedef struct s_stack
 {
 	int				number;
 	int				idx;
-	int				double_rot;
-	int				double_revrse;
+	int				rr;
+	int				rrr;
 	struct s_stack	*target;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -61,20 +61,20 @@ void	stack_is_3(t_stack **stack_a);
 
 //operations
 	//rotate
-		void	rotate_a(t_stack **head);
-		void	rotate_b(t_stack **head);
-		void	rotate_ab(t_stack **head_a, t_stack **head_b);
+		void	ra(t_stack **head);
+		void	rb(t_stack **head);
+		void	rr(t_stack **head_a, t_stack **head_b);
 	//reverse rotate
-		void	reverse_rotate_a(t_stack **head);
-		void	reverse_rotate_b(t_stack **head);
-		void	reverse_rotate_ab(t_stack **head_a, t_stack **head_b);
+		void	rra(t_stack **head);
+		void	rrb(t_stack **head);
+		void	rrr(t_stack **head_a, t_stack **head_b);
 	//push
-		void	push_a(t_stack **head_b, t_stack **head_a);
-		void	push_b(t_stack **head_a, t_stack **head_b);
+		void	pa(t_stack **head_b, t_stack **head_a);
+		void	pb(t_stack **head_a, t_stack **head_b);
 	//swap
-		void	swap_a(t_stack **head_a);
-		void	swap_b(t_stack **head_b);
-		void	swap_ab(t_stack **head_a, t_stack **head_b);
+		void	sa(t_stack **head_a);
+		void	sb(t_stack **head_b);
+		void	ss(t_stack **head_a, t_stack **head_b);
 
 //algo implementation -- turksort
 

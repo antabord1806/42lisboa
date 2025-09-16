@@ -30,20 +30,20 @@ void reverse_rotate(t_stack **head)
     cur->next = *head;
     *head = cur;
 }
-void	reverse_rotate_ab(t_stack **head_a, t_stack **head_b)
+void	rrr(t_stack **head_a, t_stack **head_b)
 {
     reverse_rotate(head_a);
     reverse_rotate(head_b);
     write(1, "rrr\n", 4);
 }
 
-void	reverse_rotate_a(t_stack **head)
+void	rra(t_stack **head)
 {
 	reverse_rotate(head);
 	write(1, "rra\n", 4);
 }
 
-void	reverse_rotate_b(t_stack **head)
+void	rrb(t_stack **head)
 {
 	reverse_rotate(head);
 	write(1, "rrb\n", 4);

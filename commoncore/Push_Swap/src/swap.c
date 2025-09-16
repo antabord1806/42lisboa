@@ -23,19 +23,19 @@ void	swap(t_stack **head)
 	*head = tmp;
 }
 
-void	swap_a(t_stack **head_a)
+void	sa(t_stack **head_a)
 {
 	swap(head_a);
 	write(1, "sa\n", 3);
 }
 
-void	swap_b(t_stack **head_b)
+void	sb(t_stack **head_b)
 {
 	swap(head_b);
 	write(1, "sb\n", 3);
 }
 
-void	swap_ab(t_stack **head_a, t_stack **head_b)
+void	ss(t_stack **head_a, t_stack **head_b)
 {
 	swap(head_a);
 	swap(head_b);

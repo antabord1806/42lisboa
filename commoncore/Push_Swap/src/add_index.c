@@ -35,7 +35,7 @@ int	check_if_sorted(t_stack **stack, int nbr)
 	while (tmp && tmp->next)
 	{
 		if (tmp->number > tmp->next->number && nbr == 0)
-			reverse_rotate_a(stack);
+			rra(stack);
 		else if (tmp->number > tmp->next->number && nbr != 0)
 			return (0);
 		tmp = tmp->next;
