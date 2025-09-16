@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 		freedom_stack(&stack_a);
 		return (0);
 	}
-	printf("loop\n");
 	push_loop_1(&stack_a, &stack_b);
 	freedom(args);
 	freedom_stack(&stack_a);

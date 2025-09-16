@@ -18,30 +18,29 @@
 void double_rotation_check(t_stack *node_a, t_stack **stack_a,
 		t_stack **stack_b, int nbr)
 {
-	t_stack *tmp = node_a;
-	int total_rr = 0;
-	int total_rrr = 0;
+	int move_rr;
+	int	move_rrr;
 
+	move_rr = 0;
+	move_rrr = 0;
 	if (nbr == 0)
 	{
-		while (tmp)
+		if (node_a->idx >= lst_size(stack_a) / 2 && node_a->target->idx >= lst_size(stack_b) / 2)
 		{
-			tmp->rr = 0;
-			tmp->rrr = 0;
-			if (tmp->idx >= lst_size(stack_a) / 2
-				&& tmp->target->idx >= lst_size(stack_b) / 2)
-				tmp->rrr++;
-			else if (tmp->idx < lst_size(stack_a) / 2
-				&& tmp->target->idx < lst_size(stack_b) / 2)
-				tmp->rr++;
-
-			total_rr += tmp->rr;
-			total_rrr += tmp->rrr;
-
-			tmp = tmp->next;
+			if ((lst_size(stack_a) - node_a->idx) < lst_size(stack_b) - node_a->target->idx)
+				move_rrr = lst_size(stack_a) - node_a->idx;
+			else
+				move_rrr = lst_size(stack_b) - node_a->target->idx;
 		}
-		node_a->rr = total_rr;
-		node_a->rrr = total_rrr;
+		else if (node_a->idx < lst_size(stack_a) / 2 && node_a->target->idx < lst_size(stack_b) / 2)
+		{
+			if (node_a->idx < node_a->target->idx)
+				move_rr = node_a->idx;
+			else
+				move_rr = node_a->target->idx;
+		}
+		node_a->rr = move_rr;
+		node_a->rrr = move_rrr;
 	}
 	else
 	{
@@ -104,18 +103,16 @@ int	cost_analysis(t_stack *ptr, t_stack **stack_a, t_stack **stack_b)
 {
 	int cost_a;
 	int cost_b;
-	int size_b;
-	int size_a;
 
-	size_a = lst_size(stack_a);
-	size_b = lst_size(stack_b);
+	if (!ptr || !ptr->target)
+		return 0;
 	double_rotation_check(ptr, stack_a, stack_b, 0);
-	if (ptr->idx >= size_a / 2)
-		cost_a = size_a - (ptr->rrr) - (ptr->idx);
+	if (ptr->idx >= lst_size(stack_a) / 2)
+		cost_a = lst_size(stack_a) - (ptr->rrr) - (ptr->idx);
 	else
 		cost_a = ptr->idx - ptr->rr;
-	if (ptr->target->idx >= size_b / 2)
-		cost_b = size_b - ptr->target->rrr - (ptr->target->idx);
+	if (ptr->target->idx >= lst_size(stack_b) / 2)
+		cost_b = lst_size(stack_b) - ptr->target->rrr - (ptr->target->idx);
 	else
 		cost_b = ptr->target->idx - ptr->target->rr;
 	return (cost_a + cost_b);
@@ -126,23 +123,22 @@ void	push_loop_1(t_stack **stack_a, t_stack **stack_b)
 	t_stack *ptr;
 	t_stack *node_a;
 	int cheapest;
+	int	cost;
 
 	ptr = *stack_a;
-	printf("before push\n");
 	move_target_to_top_or_push_b(ptr, stack_a, stack_b, 0);
 	while (*stack_a && !check_if_3(stack_a))
 	{
-		printf("loopin\n");
 		node_a = NULL;
 		cheapest = INT_MAX;
 		ptr = *stack_a;
 		while (ptr)
 		{
-			printf("loop1\n");
 			find_target_in_b(ptr, stack_b);
-			if (cost_analysis(ptr, stack_a, stack_b) < cheapest)
+			cost = cost_analysis(ptr, stack_a, stack_b);
+			if (cost < cheapest)
 			{
-				cheapest = cost_analysis(ptr, stack_a, stack_b);
+				cheapest = cost;
 				node_a = ptr;
 			}
 			ptr = ptr->next;
