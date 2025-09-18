@@ -41,6 +41,7 @@ char	**join_args(int ac, char **av);
 
 //error & free
 void	ft_err(void);
+int		too_big(int nbr);
 void	freedom(char **str);
 void	freedom_stack(t_stack **stack);
 
@@ -76,6 +77,7 @@ void	stack_is_3(t_stack **stack_a);
 //algo implementation -- turksort
 
 void	push_loop_1(t_stack **stack_a, t_stack **stack_b);
+void	push_loop_1_v2(t_stack **stack_a, t_stack **stack_b);
 void	push_loop_2(t_stack **stack_a, t_stack **stack_b);
 void	move_target_to_top_or_push_b(t_stack *target, t_stack **stack_a, t_stack **stack_b, int nbr);
 int		lst_size(t_stack **stack);

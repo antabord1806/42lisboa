@@ -102,7 +102,7 @@ void	parser(t_stack **stack, char **av)
 			ft_err();
 		}
 		value = ft_atol(av[i]);
-		if (value > INT_MAX || value < INT_MIN)
+		if (value > INT_MAX || value < INT_MIN || too_big(value))
 			ft_err();
 		new->number = value;
 		new->next = NULL;

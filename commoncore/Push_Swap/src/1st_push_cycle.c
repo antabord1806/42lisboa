@@ -12,21 +12,6 @@
 
 #include "push_swap.h"
 
-void double_rotation_check(t_stack *node_a, t_stack **stack_a, t_stack **stack_b)
-{
-    while (node_a->idx != 0 && node_a->target->idx != 0)
-    {
-        if (node_a->idx <= lst_size(stack_a) / 2 && node_a->target->idx <= lst_size(stack_b) / 2)
-            rotate_ab(stack_a, stack_b);
-        else if (node_a->idx > lst_size(stack_a) / 2 && node_a->target->idx > lst_size(stack_b) / 2)
-            reverse_rotate_ab(stack_a, stack_b);
-        else
-            break;
-        add_index(stack_a);
-        add_index(stack_b);
-    }
-}
-
 void move_cheapest_node(t_stack *node_a, t_stack **stack_a, t_stack **stack_b)
 {
     int size_a;
@@ -34,7 +19,6 @@ void move_cheapest_node(t_stack *node_a, t_stack **stack_a, t_stack **stack_b)
 
     size_a = lst_size(stack_a);
     size_b = lst_size(stack_b);
-    double_rotation_check(node_a, stack_a, stack_b);
     while ((*stack_a) != node_a)
     {
         if (node_a->idx >= size_a / 2)
@@ -101,8 +85,7 @@ void push_loop_1(t_stack **stack_a, t_stack **stack_b)
     t_stack *node_a;
     int cheapest;
 
-    ptr = *stack_a;
-    move_target_to_top_or_push_b(ptr, stack_a, stack_b, 0);
+    move_target_to_top_or_push_b(*stack_a, stack_a, stack_b, 0);
     while (*stack_a && !check_if_3(stack_a))
     {
         node_a = NULL;
@@ -121,6 +104,11 @@ void push_loop_1(t_stack **stack_a, t_stack **stack_b)
         if (node_a)
             move_cheapest_node(node_a, stack_a, stack_b);
     }
+    push_loop_1_v2(stack_a, stack_b);
+}
+
+void push_loop_1_v2(t_stack **stack_a, t_stack **stack_b)
+{
     stack_is_3(stack_a);
     push_loop_2(stack_a, stack_b);
 }
