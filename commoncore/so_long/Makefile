@@ -1,0 +1,62 @@
+# Nome do executável
+NAME = so_long
+
+# Compilador e flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g
+
+# Diretórios
+SRC_DIR = src/map
+INC_DIR = src/libraries
+LIBFT_DIR = libft
+MLX_DIR = minilibx-linux
+
+# Includes
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
+
+# Fontes do projeto (especificados manualmente)
+SRC = \
+	$(SRC_DIR)/map_parsing.c \
+	#$(SRC_DIR)/map_to_struct.c \
+
+# Objetos
+OBJ = $(SRC:.c=.o)
+
+# Bibliotecas externas
+LIBFT = $(LIBFT_DIR)/libft.a
+MLX = $(MLX_DIR)/libmlx.a
+
+# Flags da MiniLibX (para Linux)
+MLX_FLAGS = -lX11 -lXext -lm
+
+# Regra principal
+all: $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLX_FLAGS)
+
+# Compilar libft
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+# Compilar mlx
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
+
+# Limpar objetos
+clean:
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
+
+# Limpar tudo
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(MLX_DIR) clean
+
+# Recompilar tudo
+re: fclean all
+
+.PHONY: all clean fclean re
+

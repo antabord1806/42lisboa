@@ -6,12 +6,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+#include <fcntl.h>
 
-#include <mlx.h>
-#include <libft.h>
+#include "../../minilibx-linux/mlx.h"
+#include "../../libft/libft.h"
+#include "fun.h"
+
+//aux
+typedef struct s_grid
+{
+    char    **lines;
+    size_t  n_lines;
+    size_t  n_collums;
+}   t_grid;
 
 //assets
-
 typedef struct s_player {
     int     x;
     int     y;
@@ -36,13 +45,5 @@ typedef struct s_game {
     t_map       map;
 }   t_game;
 
-//aux
-
-typedef struct s_grid
-{
-    char    **lines;
-    size_t  n_lines;
-    size_t  n_collums;
-}   t_grid;
 
 #endif

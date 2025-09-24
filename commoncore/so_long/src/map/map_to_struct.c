@@ -1,16 +1,12 @@
 #include "structs.h"
 
-t_grid  *create_grid()
+int     add_line(t_grid *grid, char *str, int len)
 {
-    t_grid *grid;
+    char    *s;
 
-    grid = malloc(sizeof(t_grid));
-    if (!grid)
-        return ;
-    grid->lines = NULL;
-    grid->n_lines = 0;
-    grid->n_collums = 0;
-    return (grid);
+    s = malloc(sizeof(char *) * (len + 1));
+    if (!s)
+        return(free(grid), 1);
+    s[len + 1] = '\0';
 }
 
-int     add_line()
