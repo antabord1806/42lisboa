@@ -1,5 +1,5 @@
-#ifndef STRUCTS_H
-#define STRUCTS_H
+#ifndef A_STRUCTS_H
+#define A_STRUCTS_H
 
 #include <stdio.h>
 #include <unistd.h>
@@ -8,16 +8,16 @@
 #include <stddef.h>
 #include <fcntl.h>
 
-#include "../../minilibx-linux/mlx.h"
-#include "../../libft/libft.h"
-#include "fun.h"
+#include "../minilibx-linux/mlx.h"
+#include "../libft/libft.h"
+#include "a_fun.h"
 
 //aux
 typedef struct s_grid
 {
     char    **lines;
-    size_t  n_lines;
-    size_t  n_collums;
+    int     n_lines;
+    int     n_columns;
 }   t_grid;
 
 //assets

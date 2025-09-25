@@ -25,24 +25,27 @@ static void	ft_free_all(char **arr_aloc)
 	free(arr_aloc);
 }
 
-static size_t	ft_count_words(char const *s, char c)
+static size_t ft_count_words(char const *s, char c)
 {
-	int	i;
+    size_t i = 0;
 
-	i = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (*s != c && *s)
-			i++;
-		while (*s != c && *s)
-			s++;
-	}
-	return (i);
+    if (!s)
+        return 0;
+
+    while (*s)
+    {
+        while (*s == c)
+            s++;
+        if (*s && *s != c)
+            i++;
+        while (*s && *s != c)
+            s++;
+    }
+    return i;
 }
 
-static void	ft_str_fill(char **arr_aloc, char const *s, char c)
+
+static int	ft_str_fill(char **arr_aloc, char const *s, char c)
 {
 	size_t	len;
 	int		i;
@@ -62,13 +65,12 @@ static void	ft_str_fill(char **arr_aloc, char const *s, char c)
 		{
 			arr_aloc[i] = malloc((len + 1) * sizeof(char));
 			if (!arr_aloc[i])
-			{
-				ft_free_all(arr_aloc);
-			}
+				return (ft_free_all(arr_aloc), 0);
 			ft_strlcpy(arr_aloc[i], s - len, len + 1);
+			i++;
 		}
-		i++;
 	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -82,12 +84,16 @@ char	**ft_split(char const *s, char c)
 	arr_aloc = malloc((nwords + 1) * sizeof(char *));
 	if (!arr_aloc)
 		return (NULL);
-	ft_str_fill(arr_aloc, s, c);
-	if (!arr_aloc)
+	if (!ft_str_fill(arr_aloc, s, c))
+	{
+		ft_free_all(arr_aloc);
 		return (NULL);
-	arr_aloc[nwords] = NULL;
+	}
+	else
+		arr_aloc[nwords] = NULL;
 	return (arr_aloc);
 }
+
 /* 
 int	main(int ac, char *av[])
 {

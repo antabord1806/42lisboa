@@ -6,8 +6,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
 # Diretórios
-SRC_DIR = src/map
-INC_DIR = src/libraries
+SRC_DIR = src
+INC_DIR = src
 LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
 
@@ -16,8 +16,12 @@ INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
 # Fontes do projeto (especificados manualmente)
 SRC = \
+	$(SRC_DIR)/free.c \
+	$(SRC_DIR)/error.c \
+	$(SRC_DIR)/main.c \
 	$(SRC_DIR)/map_parsing.c \
-	#$(SRC_DIR)/map_to_struct.c \
+	$(SRC_DIR)/map_check.c \
+	$(SRC_DIR)/map_to_struct.c \
 
 # Objetos
 OBJ = $(SRC:.c=.o)
