@@ -26,6 +26,7 @@ void    free_grid(t_grid *grid);
     int     count_p(char *str);
     int     is_square(char **lines, int n_lines);
     int     top_bottom_walls(char *st_line, char *lst_line);
+    int     e_p_finder(char **lines, int max_y, int max_x);
 
     //to_struct
     t_grid      *create_grid(char **lines, int n_lines);

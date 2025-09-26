@@ -1,5 +1,5 @@
-#include "a_fun.h"
-#include "a_structs.h"
+#include "../a_fun.h"
+#include "../a_structs.h"
 
 
 static t_grid	*init_grid(void)
@@ -30,10 +30,10 @@ t_grid	*create_grid(char **line, int n_lines)
 	}
 	if (!check_counts(line))
 		return (free_grid(grid), NULL);
-	printf("grid created\n");
-	if (!top_bottom_walls(line[0], line[grid->n_lines - 1]) || way_out(line,
-			n_lines, grid->n_columns))
+	if (!top_bottom_walls(line[0], line[grid->n_lines - 1]) || !e_p_finder(line,
+		n_lines - 1, grid->n_columns - 1))
 		return (free_grid(grid), NULL);
+	printf("grid created\n");
 	free_grid(grid);
 	return (grid);
 }

@@ -1,5 +1,5 @@
-#include "a_fun.h"
-#include "a_structs.h"
+#include "../a_fun.h"
+#include "../a_structs.h"
 
 
 int	char_finder(char c)
@@ -17,7 +17,10 @@ char	*read_block(int fd)
 
 	bytes_read = read(fd, buffer, 1024);
 	if (bytes_read <= 0)
+	{
+		ft_puterr("Error: Where map? :(\n");
 		return (NULL);
+	}
 	buffer[bytes_read] = '\0';
 	return (ft_strdup(buffer));
 }

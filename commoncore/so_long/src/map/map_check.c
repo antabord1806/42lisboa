@@ -1,5 +1,5 @@
-#include "a_structs.h"
-#include "a_fun.h"
+#include "../a_structs.h"
+#include "../a_fun.h"
 
 int check_walls(char *line)
 {
@@ -30,10 +30,7 @@ int is_square(char **lines, int n_lines)
     while(i < n_lines)
     {
         if (ft_strlen(lines[i]) != len)
-        {
-             printf("%s\n",lines[i]);
              return 0;
-        }
         i++;
     }
     return 1;
@@ -88,7 +85,7 @@ int check_counts(char **lines)
     }
     if (e != 1 || p != 1)
     {
-        ft_puterr("Error: Invalid spawn or exit");
+        ft_puterr("Error: Invalid spawn or exit\n");
         return (0);
     }
     return (1);
