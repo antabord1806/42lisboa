@@ -22,6 +22,7 @@ SRC = \
 	$(SRC_DIR)/map_parsing.c \
 	$(SRC_DIR)/map_check.c \
 	$(SRC_DIR)/map_to_struct.c \
+	$(SRC_DIR)/final_parsing.c \
 
 # Objetos
 OBJ = $(SRC:.c=.o)

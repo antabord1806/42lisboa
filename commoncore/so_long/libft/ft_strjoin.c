@@ -25,20 +25,21 @@ char *ft_strjoin(char *s1, char *s2)
 
 	j = 0;
 	i = 0;
+	if (!s2)
+			return NULL;
 	len1 = ft_strlen(s1);
-	if (!len1)
-		len1 = 0;
 	len2 = ft_strlen(s2);
-	if (!len2)
-		return NULL;
 	result = malloc(len1 + len2 + 1);
 	if (!result)
 		return NULL;
-	while (s1[i])
+	if (s1)
 	{
-		result[j] = s1[i];
-		i++;
-		j++;
+		while (s1[i])
+		{
+			result[j] = s1[i];
+			i++;
+			j++;
+		}
 	}
 	i = 0;
 	while (s2[i])

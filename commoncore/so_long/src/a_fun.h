@@ -19,13 +19,13 @@ void    free_grid(t_grid *grid);
     char    *read_block(int fd);
     char    *line_reader(int fd);
     int     validate_chars(char *s);
-    int     check_walls(char *str);
+    int     check_walls(char *line);
     int     check_counts(char **lines);
     int     line_parser(char *str);
-    int     check_walls(char *line);
     int     count_e(char *str);
     int     count_p(char *str);
     int     is_square(char **lines, int n_lines);
+    int     top_bottom_walls(char *st_line, char *lst_line);
 
     //to_struct
     t_grid      *create_grid(char **lines, int n_lines);

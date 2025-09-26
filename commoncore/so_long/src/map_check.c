@@ -27,7 +27,6 @@ int is_square(char **lines, int n_lines)
         return 0;
     i = 1;
     len = ft_strlen(lines[0]);
-    printf("%d\n",len);
     while(i < n_lines)
     {
         if (ft_strlen(lines[i]) != len)
