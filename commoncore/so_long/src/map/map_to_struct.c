@@ -33,7 +33,14 @@ t_grid	*create_grid(char **line, int n_lines)
 	if (!top_bottom_walls(line[0], line[grid->n_lines - 1]) || !e_p_finder(line,
 		n_lines - 1, grid->n_columns - 1))
 		return (free_grid(grid), NULL);
+	
 	printf("grid created\n");
 	free_grid(grid);
 	return (grid);
+}
+
+void	update_map_dimensions(t_map *map)
+{
+	map->width = map->grid.n_columns;
+	map->height = map->grid.n_lines;
 }
