@@ -1,46 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_to_struct.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-09-27 15:26:58 by antabord          #+#    #+#             */
+/*   Updated: 2025-09-27 15:26:58 by antabord         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../a_fun.h"
 #include "../a_structs.h"
 
 
-static t_grid	*init_grid(void)
+static t_map	*init_grid(void)
 {
-	t_grid *grid = malloc(sizeof(t_grid));
-	if (!grid)
+	t_map *map = malloc(sizeof(t_map));
+	if (!map)
 		return (NULL);
-	grid->lines = NULL;
-	grid->n_lines = 0;
-	grid->n_columns = 0;
-	return (grid);
+	map->grid = NULL;
+	map->height = 0;
+	map->width = 0;
+	return (map);
 }
 
-t_grid	*create_grid(char **line, int n_lines)
+t_map	*create_map(char **line, int height)
 {
-	t_grid *grid;
+	t_map *map;
 
-	grid = init_grid();
-	if (!grid)
+	map = init_grid();
+	if (!map)
 		return (NULL);
-	grid->n_columns = ft_strlen(line[0]);
-	grid->lines = line;
-	grid->n_lines = n_lines;
-	if (!is_square(line, n_lines))
+	map->width = ft_strlen(line[0]);
+	map->grid = line;
+	map->height = height;
+	if (!is_square(line, height))
 	{
 		ft_puterr("Error: The map is not rectangular\n");
-		return (free_grid(grid), NULL);
+		return (free_grid(map), NULL);
 	}
 	if (!check_counts(line))
-		return (free_grid(grid), NULL);
-	if (!top_bottom_walls(line[0], line[grid->n_lines - 1]) || !e_p_finder(line,
-		n_lines - 1, grid->n_columns - 1))
-		return (free_grid(grid), NULL);
-	
-	printf("grid created\n");
-	free_grid(grid);
-	return (grid);
-}
-
-void	update_map_dimensions(t_map *map)
-{
-	map->width = map->grid.n_columns;
-	map->height = map->grid.n_lines;
+		return (free_grid(map), NULL);
+	if (!top_bottom_walls(line[0], line[map->height - 1]) || !e_p_finder(line,
+		height - 1, map->width - 1))
+		return (free_grid(map), NULL);
+	printf("map created\n");
+	free_grid(map);
+	return (map);
 }

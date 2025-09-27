@@ -1,36 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-27 15:26:05 by antabord          #+#    #+#             */
-/*   Updated: 2025-09-27 15:26:05 by antabord         ###   ########.fr       */
+/*   Created: 2025-09-27 15:25:57 by antabord          #+#    #+#             */
+/*   Updated: 2025-09-27 15:25:57 by antabord         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "a_fun.h"
 #include "a_structs.h"
-
-int	main(int argc, char **argv)
-{
-	t_map	*map;
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
-
-	map = main_parser(argc, argv);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, map->width * TILE_SIZE, map->height * TILE_SIZE,
-			"so_long");
-	map->ground = mlx_xpm_file_to_image(mlx, "ground.xpm", &x, &y);
-	map->wall = mlx_xpm_file_to_image(mlx, "wall.xpm", &x, &y);
-	map->player = mlx_xpm_file_to_image(mlx, "player.xpm", &x, &y);
-	map->exit = mlx_xpm_file_to_image(mlx, "exit.xpm", &x, &y);
-	map_render(mlx, win);
-}
 
 void	map_render(void *mlx, void *win)
 {

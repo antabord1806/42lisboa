@@ -12,15 +12,16 @@
 #include "../libft/libft.h"
 #include "a_fun.h"
 
-//aux
-typedef struct s_grid
-{
-    char    **lines;
-    int     n_lines;
-    int     n_columns;
-}   t_grid;
-
 //assets
+typedef struct s_map {
+    char    **grid;
+    int     width;
+    int     height;
+    void    *player;
+    void    *wall;
+    void    *ground;
+    void    *exit;
+}   t_map;
 typedef struct s_player {
     int     x;
     int     y;
@@ -29,14 +30,6 @@ typedef struct s_player {
     void    *walking;
 }   t_player;
 
-typedef struct s_map {
-    int     width;
-    int     height;
-    void    *wall;
-    void    *ground;
-    void    *exit;
-    t_grid     grid;
-}   t_map;
 
 typedef struct s_game {
     void    *win;
@@ -44,6 +37,5 @@ typedef struct s_game {
     t_player    player;
     t_map       map;
 }   t_game;
-
 
 #endif

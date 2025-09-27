@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-09-27 15:26:53 by antabord          #+#    #+#             */
+/*   Updated: 2025-09-27 15:26:53 by antabord         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../a_fun.h"
 #include "../a_structs.h"
 
@@ -63,7 +75,6 @@ char	**line_check(char *str)
 			return (ft_free_all(lines), NULL);
 		i++;
 	}
-	create_grid(lines, i);
 	return (lines);
 }
 
@@ -90,7 +101,7 @@ char	*line_reader(int fd)
 		}
 		free(block);
 	}
-	if (!tmp || !line_check(tmp))
+	if (!tmp)
 		return (free(tmp), NULL);
 	return (tmp);
 }

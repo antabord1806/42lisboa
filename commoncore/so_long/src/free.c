@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-09-27 15:26:11 by antabord          #+#    #+#             */
+/*   Updated: 2025-09-27 15:26:11 by antabord         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "a_structs.h"
 #include "a_fun.h"
 
@@ -14,11 +26,11 @@ void	ft_free_all(char **arr_aloc)
 	free(arr_aloc);
 }
 
-void free_grid(t_grid *grid)
+void free_grid(t_map *map)
 {
-    if (!grid)
+    if (!map)
         return;
-    if (grid->lines)
-        ft_free_all(grid->lines);
-    free(grid);
+    if (map->grid)
+        ft_free_all(map->grid);
+    free(map);
 }
