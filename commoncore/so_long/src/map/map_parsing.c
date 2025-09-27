@@ -19,7 +19,7 @@ char	*read_block(int fd)
 	if (bytes_read <= 0)
 	{
 		ft_puterr("Error: Where map? :(\n");
-		return (NULL);
+		exit(1);
 	}
 	buffer[bytes_read] = '\0';
 	return (ft_strdup(buffer));
@@ -74,7 +74,7 @@ char	*line_reader(int fd)
 	char *old;
 
 	tmp = NULL;
-	while ((block = read_block(fd)))
+	if ((block = read_block(fd)))
 	{
 		if (!validate_chars(block))
 			return (free(block), free(tmp), NULL);
