@@ -19,6 +19,8 @@ SRC = \
 	$(SRC_DIR)/free.c \
 	$(SRC_DIR)/error.c \
 	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/render_map.c \
+	$(SRC_DIR)/innit.c \
 	$(SRC_DIR)/map/map_parsing.c \
 	$(SRC_DIR)/map/map_check.c \
 	$(SRC_DIR)/map/map_to_struct.c \

@@ -13,18 +13,6 @@
 #include "../a_fun.h"
 #include "../a_structs.h"
 
-
-static t_map	*init_grid(void)
-{
-	t_map *map = malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
-	map->grid = NULL;
-	map->height = 0;
-	map->width = 0;
-	return (map);
-}
-
 t_map	*create_map(char **line, int height)
 {
 	t_map *map;

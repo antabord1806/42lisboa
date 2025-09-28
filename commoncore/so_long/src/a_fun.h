@@ -10,6 +10,8 @@
 #endif
 
 typedef struct s_map t_map;
+typedef struct s_game t_game;
+typedef struct s_player t_player;
 
 int	main(int argc, char **argv);
 
@@ -36,9 +38,15 @@ void    free_grid(t_map *map);
     int     e_p_finder(char **lines, int max_y, int max_x);
     
     //to_struct
-    t_map      *create_map(char **lines, int n_lines);
+    t_map   *create_map(char **lines, int n_lines);
+    t_map	*init_grid(void);
+    t_game  *game_init(t_map *map, t_player *player);
+    t_player    *player_init(void);
 
     //render
+    void    load_images(void *mlx, t_map *map);
     void	map_render(void *mlx, void *win, t_map *map);
+    void	*rendering_ground(int y, t_map *map);
+    
 
 #endif
