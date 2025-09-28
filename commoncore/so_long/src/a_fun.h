@@ -5,7 +5,9 @@
 #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 
+#ifndef TILE_SIZE
 #define TILE_SIZE 64
+#endif
 
 typedef struct s_map t_map;
 
@@ -37,6 +39,6 @@ void    free_grid(t_map *map);
     t_map      *create_map(char **lines, int n_lines);
 
     //render
-    void	map_render(void *mlx, void *win);
+    void	map_render(void *mlx, void *win, t_map *map);
 
 #endif

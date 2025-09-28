@@ -20,8 +20,10 @@ typedef struct s_map {
     void    *player;
     void    *wall;
     void    *ground;
+    void    *ground_water;
     void    *exit;
 }   t_map;
+
 typedef struct s_player {
     int     x;
     int     y;

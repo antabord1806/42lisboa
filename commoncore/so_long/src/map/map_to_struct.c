@@ -46,6 +46,5 @@ t_map	*create_map(char **line, int height)
 		height - 1, map->width - 1))
 		return (free_grid(map), NULL);
 	printf("map created\n");
-	free_grid(map);
 	return (map);
 }

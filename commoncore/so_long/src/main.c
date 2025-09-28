@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-09-27 15:26:05 by antabord          #+#    #+#             */
-/*   Updated: 2025-09-27 15:26:05 by antabord         ###   ########.fr       */
+/*   Created: 2025/09/27 15:26:05 by antabord          #+#    #+#             */
+/*   Updated: 2025/09/27 23:28:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ int	main(int argc, char **argv)
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, map->width * TILE_SIZE, map->height * TILE_SIZE,
 			"so_long");
-	map->ground = mlx_xpm_file_to_image(mlx, "ground.xpm", &x, &y);
-	map->wall = mlx_xpm_file_to_image(mlx, "wall.xpm", &x, &y);
-	map->player = mlx_xpm_file_to_image(mlx, "player.xpm", &x, &y);
-	map->exit = mlx_xpm_file_to_image(mlx, "exit.xpm", &x, &y);
-	map_render(mlx, win);
+	map->ground = mlx_xpm_file_to_image(mlx, "assets/map/AnyConv.com__ground.xpm", &x, &y);
+	//map->ground_water = mlx_xpm_file_to_image(mlx, "ground_water.xpm", &x, &y);
+	map->wall = mlx_xpm_file_to_image(mlx, "assets/map/AnyConv.com__water.xpm", &x, &y);
+	map->player = mlx_xpm_file_to_image(mlx, "assets/player/idle/iloveimg-resized/image_part_001.xpm", &x, &y);
+	map->exit = mlx_xpm_file_to_image(mlx, "assets/exit/AnyConv.com__Tower.xpm", &x, &y);
+	map_render(mlx, win, map);
+	mlx_loop(mlx);
 }
 
-void	map_render(void *mlx, void *win)
+void	map_render(void *mlx, void *win, t_map *map)
 {
 	int x;
 	int y;
 	void *img_draw;
-	t_map *map;
 
 	x = 0;
 	y = 0;
@@ -47,15 +48,18 @@ void	map_render(void *mlx, void *win)
 		{
 			if (map->grid[y][x] == '0')
 				img_draw = map->ground;
-			if (map->grid[y][x] == '1')
+			else if (map->grid[y][x] == '1')
 				img_draw = map->wall;
-			if (map->grid[y][x] == 'P')
+			else if (map->grid[y][x] == 'P')
 				img_draw = map->player;
-			if (map->grid[y][x] == 'E')
+			else if (map->grid[y][x] == 'E')
 				img_draw = map->exit;
 			else
 				img_draw = map->wall;
+			mlx_put_image_to_window(mlx, win, img_draw, TILE_SIZE * x, TILE_SIZE * y);
+			x++;
 		}
+		x = 0;
+		y++;
 	}
-	mlx_put_image_to_window(mlx, win, img_draw, TILE_SIZE * x, TILE_SIZE * y);
 }
