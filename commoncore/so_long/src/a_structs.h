@@ -1,14 +1,14 @@
 #ifndef A_STRUCTS_H
 #define A_STRUCTS_H
 
-#ifdef __KEY_HOOKS__
-#else
+#ifndef __KEYS__
 #define KEY_W 119
 #define KEY_A 97
 #define KEY_S 115
 #define KEY_D 100
 #define KEY_ESC 65307
 #endif
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -26,16 +26,17 @@ typedef struct s_map {
     char    **grid;
     int     width;
     int     height;
+    int     coins_map;
+    int     coins_found;
+    int     player_x;
+    int     player_y;
     void    *player;
     void    *wall;
+    void    *coins;
     void    *ground;
-    void    *ground_water;
     void    *exit;
 }   t_map;
-
 typedef struct s_player {
-    int     x;
-    int     y;
     int     moves;
     void    *sprite;
     void    *walking;

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../a_structs.h"
 #include "../a_fun.h"
+#include "../a_structs.h"
 
 int	top_bottom_walls(char *st_line, char *lst_line)
 {
@@ -30,34 +30,38 @@ int	top_bottom_walls(char *st_line, char *lst_line)
 	return (1);
 }
 
-static int	check_way_out(char **str, int y, int x)
+void	flood_fill_st(t_map *map, int x, int y, int height)
 {
-	if (str[y + 1][x] == '0' || str[y - 1][x] == '0' || str[y][x + 1] == '0' || str[y][x - 1] == '0')
-		return 1;
-	return (0);
-}
+	char	**copy;
+	int		i;
 
-int	e_p_finder(char **lines, int max_y, int max_x)
-{
-	int		y;
-	int		x;
-
-	y = 0;
-	x = 0;
-	while (y < max_y)
+	i = 0;
+	copy = malloc(sizeof(char *) * (height + 1));
+	if (!copy)
+		return ;
+	while (i < height)
 	{
-		while (x < max_x)
+		copy[i] = ft_strdup(map->grid[i]);
+		if (!copy)
 		{
-			if ((lines[y][x] == 'E' && !check_way_out(lines, y, x)) || (lines[y][x] == 'P' && !check_way_out(lines, y, x)))
-			{
-				ft_puterr("Error: exit or player blocked!\n");
-				return (0);
-			}
-			x++;
+			ft_free_all(copy);
+			return ;
 		}
-		x = 0;
-		y++;
+		i++;
 	}
-	return (1);
+	copy[i] = '\0';
+	flood_filled(copy, x, y, &map->coins_found);
 }
 
+void	flood_filled(char **copy, int x, int y, int *coins)
+{
+	if (copy[y][x] == '1' || copy[y][x] == 'V')
+		return ;
+	if (copy[y][x] == 'C')
+		(*coins)++;
+	copy[y][x] = 'V';
+	flood_filled(copy, x + 1, y, coins);
+	flood_filled(copy, x - 1, y, coins);
+	flood_filled(copy, x, y + 1, coins);
+	flood_filled(copy, x, y - 1, coins);	
+}

@@ -36,17 +36,32 @@ void    free_grid(t_map *map);
     int     is_square(char **lines, int n_lines);
     int     top_bottom_walls(char *st_line, char *lst_line);
     int     e_p_finder(char **lines, int max_y, int max_x);
+    void	flood_fill_st(t_map *map, int x, int y, int height);
+    void	flood_filled(char **copy, int x, int y, int *coins);
+    int     coin_count(t_map *map);
     
     //to_struct
     t_map   *create_map(char **lines, int n_lines);
     t_map	*init_grid(void);
     t_game  *game_init(t_map *map, t_player *player);
-    t_player    *player_init(void);
+    t_player    *player_init();
+    void    find_p_x(t_map *map);
+    void    find_p_y(t_map *map);
 
     //render
     void    load_images(void *mlx, t_map *map);
-    void	map_render(void *mlx, void *win, t_map *map);
+    void	map_render(t_game *game);
     void	*rendering_ground(int y, t_map *map);
+    void    *img_drawing(t_game *game, int y, int x);
     
+    //keys & hooks
+    void	key_hooks(void *win, t_game *game);
+    int     handle_keypress(int key, t_game *game);
+    int     move_check(t_game *game, int new_y, int new_x, char key);
+    void	move_player(t_game *game, int new_y, int new_x);
+    int     destroy_win(t_game *game);
+    int     minimizer();
+    int     maximizer();
+    int     ressizer();
 
 #endif

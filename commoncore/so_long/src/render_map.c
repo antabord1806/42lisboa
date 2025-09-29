@@ -13,7 +13,7 @@
 #include "a_fun.h"
 #include "a_structs.h"
 
-/*void	map_render(void *mlx, void *win, t_map *map)
+void	map_render(t_game *game)
 {
 	int x;
 	int y;
@@ -21,27 +21,39 @@
 
 	x = 0;
 	y = 0;
-	while (y < map->height)
+	while (y < game->map->height)
 	{
-		while (x < map->width)
+		while (x < game->map->width)
 		{
-			if (map->grid[y][x] == '0')
-				img_draw = map->ground;
-			else if (map->grid[y][x] == '1')
-				img_draw = map->wall;
-			else if (map->grid[y][x] == 'P')
-				img_draw = map->player;
-			else if (map->grid[y][x] == 'E')
-				img_draw = map->exit;
+			if (game->map->grid[y][x] == '0')
+				img_draw = game->map->ground;
+			else if (game->map->grid[y][x] == '1')
+				img_draw = game->map->wall;
+			else if (game->map->grid[y][x] == 'P')
+				img_draw = img_drawing(game, y, x);
+			else if (game->map->grid[y][x] == 'C')
+				img_draw = game->map->coins;
+			else if (game->map->grid[y][x] == 'E')
+				img_draw = game->map->exit;
 			else
-				img_draw = map->wall;
-			mlx_put_image_to_window(mlx, win, img_draw, TILE_SIZE * x, TILE_SIZE * y);
+				img_draw = game->map->wall;
+			mlx_put_image_to_window(game->mlx, game->win, img_draw, TILE_SIZE * x, TILE_SIZE * y);
 			x++;
 		}
-		x = 0;
 		y++;
+		x = 0;
 	}
-}*/
+}
+
+void	*img_drawing(t_game *game, int y, int x)
+{
+	void *img;
+
+	img = game->map->player;
+	game->map->player_x = x;
+	game->map->player_y = y;
+	return (img);
+}
 
 /*void	*rendering_ground(int y, t_map *map)
 {

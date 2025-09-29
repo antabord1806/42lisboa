@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_to_struct.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: antabord <antabord@student.42.fr>          #+#  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: antabord <antabord@student.42.fr>          #+#  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025-09-27 15:26:58 by antabord          #+#    #+#             */
 /*   Updated: 2025-09-27 15:26:58 by antabord         ###   ########.fr       */
 /*                                                                            */
@@ -12,6 +15,7 @@
 
 #include "../a_fun.h"
 #include "../a_structs.h"
+
 
 t_map	*create_map(char **line, int height)
 {
@@ -30,9 +34,38 @@ t_map	*create_map(char **line, int height)
 	}
 	if (!check_counts(line))
 		return (free_grid(map), NULL);
-	if (!top_bottom_walls(line[0], line[map->height - 1]) || !e_p_finder(line,
-		height - 1, map->width - 1))
+	if (!top_bottom_walls(line[0], line[map->height - 1]))
 		return (free_grid(map), NULL);
+	if (!coin_count(map))
+		return (NULL);
 	printf("map created\n");
 	return (map);
+}
+int	coin_count(t_map *map)
+{
+	int x;
+	int y;
+	int coins;
+
+	coins = 0;
+	x = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		while (x < map->width)
+		{
+			if (map->grid[y][x] == 'C')
+				coins++;
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	map->coins_map = coins;
+	if (coins != map->coins_found)
+	{
+		ft_puterr("Invalid coin placement\n");
+		return (0);
+	}
+	return (1);
 }
