@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void move_target_to_top_or_push_b(t_stack *target, t_stack **stack_a, t_stack **stack_b, int nbr)
 {

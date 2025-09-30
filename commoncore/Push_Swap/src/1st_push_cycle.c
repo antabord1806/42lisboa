@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void double_rotation_check(t_stack *node_a, t_stack **stack_a,
 		t_stack **stack_b, int nbr)
