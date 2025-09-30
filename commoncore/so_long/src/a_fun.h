@@ -39,6 +39,7 @@ void    free_grid(t_map *map);
     void	flood_fill_st(t_map *map, int x, int y, int height);
     void	flood_filled(char **copy, int x, int y, int *coins);
     int     coin_count(t_map *map);
+    void	print_map(char **grid, int height);
     
     //to_struct
     t_map   *create_map(char **lines, int n_lines);

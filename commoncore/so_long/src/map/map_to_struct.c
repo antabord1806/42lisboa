@@ -25,8 +25,8 @@ t_map	*create_map(char **line, int height)
 	if (!map)
 		return (NULL);
 	map->width = ft_strlen(line[0]);
-	map->grid = line;
 	map->height = height;
+	map->grid = line;
 	if (!is_square(line, height))
 	{
 		ft_puterr("Error: The map is not rectangular\n");
@@ -36,8 +36,8 @@ t_map	*create_map(char **line, int height)
 		return (free_grid(map), NULL);
 	if (!top_bottom_walls(line[0], line[map->height - 1]))
 		return (free_grid(map), NULL);
-	if (!coin_count(map))
-		return (NULL);
+	find_p_x(map);
+	find_p_y(map);
 	printf("map created\n");
 	return (map);
 }

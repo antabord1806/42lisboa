@@ -25,9 +25,13 @@ t_map	*init_grid(void)
 	map->player_y = 0;
 	map->coins_map = 0;
 	map->coins_found = 0;
+	map->player = NULL;
+	map->wall = NULL;
+	map->coins = NULL;
+	map->ground = NULL;
+	map->exit = NULL;
 	return (map);
 }
-
 
 t_player    *player_init(void)
 {

@@ -40,7 +40,10 @@ t_map	*main_parser(int argc, char **argv)
 	fd = n_lines(grid);
 	map = create_map(grid, fd);
 	flood_fill_st(map, map->player_x, map->player_y, map->height);
+	if (!coin_count(map))
+		return (NULL);
 	free(line);
+	//print_map(map->grid, map->height);
 	return (map);
 }
 
@@ -53,3 +56,14 @@ int	n_lines(char **grid)
 		i++;
 	return (i);
 }
+
+/* void	print_map(char **grid, int height)
+{
+	int i = 0;
+
+	while (i < height)
+	{
+		printf("%s\n", grid[i]);
+		i++;
+	}
+} */

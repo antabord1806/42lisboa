@@ -36,25 +36,28 @@ void	flood_fill_st(t_map *map, int x, int y, int height)
 	int		i;
 
 	i = 0;
-	copy = malloc(sizeof(char *) * (height + 1));
+	copy = ft_calloc(sizeof(char *), (height + 1));
 	if (!copy)
 		return ;
 	while (i < height)
 	{
 		copy[i] = ft_strdup(map->grid[i]);
-		if (!copy)
+		if (!copy[i])
 		{
 			ft_free_all(copy);
 			return ;
 		}
 		i++;
 	}
-	copy[i] = '\0';
+	copy[i] = NULL;
 	flood_filled(copy, x, y, &map->coins_found);
+	ft_free_all(copy);
 }
 
 void	flood_filled(char **copy, int x, int y, int *coins)
 {
+	if (y < 0 || x < 0 || !copy[y] || x >= ft_strlen(copy[y]))
+		return ;
 	if (copy[y][x] == '1' || copy[y][x] == 'V')
 		return ;
 	if (copy[y][x] == 'C')
@@ -63,5 +66,5 @@ void	flood_filled(char **copy, int x, int y, int *coins)
 	flood_filled(copy, x + 1, y, coins);
 	flood_filled(copy, x - 1, y, coins);
 	flood_filled(copy, x, y + 1, coins);
-	flood_filled(copy, x, y - 1, coins);	
+	flood_filled(copy, x, y - 1, coins);
 }

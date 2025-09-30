@@ -16,12 +16,12 @@ INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
 # Fontes do projeto (especificados manualmente)
 SRC = \
+	$(SRC_DIR)/key_handler.c \
 	$(SRC_DIR)/free.c \
 	$(SRC_DIR)/error.c \
 	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/render_map.c \
 	$(SRC_DIR)/innit.c \
-	$(SRC_DIR)/key_handler.c \
+	$(SRC_DIR)/render_map.c \
 	$(SRC_DIR)/move_check.c \
 	$(SRC_DIR)/map/map_parsing.c \
 	$(SRC_DIR)/map/map_check.c \
