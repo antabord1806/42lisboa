@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 15:26:05 by antabord          #+#    #+#             */
-/*   Updated: 2025/09/28 23:14:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/30 21:26:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ void	load_images(void *mlx, t_map *map)
 	
 	x = 0;
 	y = 0;
-	map->ground = mlx_xpm_file_to_image(mlx, "assets/map/AnyConv.com__ground.xpm", &x, &y);
+	map->ground = mlx_xpm_file_to_image(mlx, "assets/raw/xpm/ground.xpm", &x, &y);
 	//map->ground_water = mlx_xpm_file_to_image(mlx, "ground_water.xpm", &x, &y);
-	//map->wall = mlx_xpm_file_to_image(mlx, "assets/map/AnyConv.com__water.xpm", &x, &y);
-	//map->player = mlx_xpm_file_to_image(mlx, "assets/player+ground/idle/64x64 xpm/Asset 2.xpm", &x, &y);
-	//map->exit = mlx_xpm_file_to_image(mlx, "assets/exit/AnyConv.com__Tower.xpm", &x, &y);
+	map->wall = mlx_xpm_file_to_image(mlx, "assets/raw/xpm/wall.xpm", &x, &y);
+	map->player = mlx_xpm_file_to_image(mlx, "assets/raw/xpm/Asset 2.xpm", &x, &y);
+	map->exit = mlx_xpm_file_to_image(mlx, "assets/raw/xpm/exit.xpm", &x, &y);
+	map->coins = mlx_xpm_file_to_image(mlx, "assets/raw/xpm/chest1.xpm", &x, &y);
 }
 
 void	key_hooks(void *win, t_game *game)
