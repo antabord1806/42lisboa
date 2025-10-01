@@ -14,7 +14,9 @@
 
 void	stack_is_2(t_stack **stack_a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
+
+	//printf("is 2? \n");
 
 	tmp = *stack_a;
 	if (tmp->number < tmp->next->number)
@@ -22,12 +24,17 @@ void	stack_is_2(t_stack **stack_a)
 	else
 		sa(stack_a);
 }
+
 void	stack_is_3(t_stack **stack)
 {
-	int a = (*stack)->number;
-	int b = (*stack)->next->number;
-	int c = (*stack)->next->next->number;
+	int	a;
+	int	b;
+	int	c;
 
+	//printf("is 3? \n");
+	a = (*stack)->number;
+	b = (*stack)->next->number;
+	c = (*stack)->next->next->number;
 	if (a > b && b < c && a < c)
 		sa(stack);
 	else if (a > b && b > c)
@@ -50,9 +57,10 @@ void	stack_is_3(t_stack **stack)
 
 int	check_if_3(t_stack **stack_a)
 {
-	t_stack *tmp;
-	int i;
+	t_stack	*tmp;
+	int		i;
 
+	//printf("checkin if 3 \n");
 	i = 0;
 	tmp = *stack_a;
 	while (tmp)

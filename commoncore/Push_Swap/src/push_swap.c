@@ -26,13 +26,16 @@ int	main(int argc, char **argv)
 	parser(&stack_a, args);
 	ft_isduplicate(&stack_a);
 	add_index(&stack_a);
+	//printf("about to check if sorted \n");
 	if (check_if_sorted(&stack_a, 1) || check_if_3(&stack_a))
 	{
 		freedom(args);
 		freedom_stack(&stack_a);
 		return (0);
 	}
+	//printf("about push 1\n");
 	push_loop_1(&stack_a, &stack_b);
+
 	freedom(args);
 	freedom_stack(&stack_a);
 	return (0);

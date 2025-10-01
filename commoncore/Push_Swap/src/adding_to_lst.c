@@ -14,9 +14,11 @@
 
 long	ft_atol(char *str)
 {
-	long	result = 0;
-	int		sign = 1;
+	long	result;
+	int		sign;
 
+	result = 0;
+	sign = 1;
 	while ((*str == ' ' || (*str >= 9 && *str <= 13)))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -64,7 +66,7 @@ char	**join_args(int ac, char **av)
 		if (!tmp_str)
 		{
 			freedom(str);
-			ft_err();
+			//ft_err();
 		}
 		str = ft_strjoin(str, tmp_str);
 		if (!str)
@@ -73,8 +75,8 @@ char	**join_args(int ac, char **av)
 	if (!ft_isdigit_mod(str))
 	{
 		freedom(str);
-		ft_err();
-	}	
+		//ft_err();
+	}
 	return (str);
 }
 
@@ -89,14 +91,15 @@ int	ft_isduplicate(t_stack **stack)
 		checking = current->next;
 		while (checking != NULL)
 		{
-			if (current->number == checking->number)
-				ft_err();
+/* 			if (current->number == checking->number)
+				ft_err(); */
 			checking = checking->next;
 		}
 		current = current->next;
 	}
 	return (1);
 }
+
 void	parser(t_stack **stack, char **av)
 {
 	int		i;
@@ -115,12 +118,11 @@ void	parser(t_stack **stack, char **av)
 			freedom_stack(stack);
 			free(new);
 			freedom(av);
-			ft_err();
-		}	
+			//ft_err();
+		}
 		new->number = value;
 		new->next = NULL;
 		ft_lstadd_back_mod(stack, new);
 		i++;
 	}
 }
-

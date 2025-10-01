@@ -12,9 +12,9 @@
 
 #include "../include/push_swap.h"
 
-void push(t_stack **donator, t_stack **reciever)
+void	push(t_stack **donator, t_stack **reciever)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!*donator)
 		return ;
@@ -28,6 +28,7 @@ void push(t_stack **donator, t_stack **reciever)
 	tmp->prev = NULL;
 	*reciever = tmp;
 }
+
 void	pa(t_stack **head_b, t_stack **head_a)
 {
 	push(head_b, head_a);
@@ -39,4 +40,3 @@ void	pb(t_stack **head_a, t_stack **head_b)
 	push(head_a, head_b);
 	write(1, "pb\n", 3);
 }
-

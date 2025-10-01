@@ -14,12 +14,12 @@
 
 void	rotate(t_stack **head)
 {
-	t_stack		*tail;
+	t_stack	*tail;
 
 	tail = *head;
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
-	while(tail->next != NULL)
+	while (tail->next != NULL)
 		tail = tail->next;
 	tail->next = (*head);
 	*head = (*head)->next;

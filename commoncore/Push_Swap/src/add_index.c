@@ -14,8 +14,8 @@
 
 void	add_index(t_stack **stack)
 {
-	int index;
-	t_stack *curr;
+	int		index;
+	t_stack	*curr;
 
 	index = 0;
 	curr = *stack;
@@ -29,8 +29,8 @@ void	add_index(t_stack **stack)
 
 int	check_if_sorted(t_stack **stack, int nbr)
 {
-	t_stack *tmp;
-	
+	t_stack	*tmp;
+
 	tmp = *stack;
 	while (tmp && tmp->next)
 	{
@@ -45,8 +45,8 @@ int	check_if_sorted(t_stack **stack, int nbr)
 
 int	lst_size(t_stack **stack)
 {
-	t_stack *ptr;
-	int i;
+	t_stack	*ptr;
+	int		i;
 
 	i = 0;
 	ptr = *stack;
@@ -58,34 +58,34 @@ int	lst_size(t_stack **stack)
 	return (i);
 }
 
-t_stack *no_target_max(t_stack **stack_b)
+t_stack	*no_target_max(t_stack **stack_b)
 {
-    t_stack *ptr;
-    t_stack *target;
+	t_stack	*ptr;
+	t_stack	*target;
 
-    ptr = *stack_b;
-    target = ptr;
-    while (ptr)
-    {
-        if (ptr->number < target->number)
-            target = ptr;
-        ptr = ptr->next;
-    }
-    return (target);
+	ptr = *stack_b;
+	target = ptr;
+	while (ptr)
+	{
+		if (ptr->number < target->number)
+			target = ptr;
+		ptr = ptr->next;
+	}
+	return (target);
 }
 
-t_stack *no_target_min(t_stack **stack_a)
+t_stack	*no_target_min(t_stack **stack_a)
 {
-    t_stack *ptr;
-    t_stack *target;
+	t_stack	*ptr;
+	t_stack	*target;
 
-    ptr = *stack_a;
-    target = ptr;
-    while (ptr)
-    {
-        if (ptr->number < target->number)
-            target = ptr;
-        ptr = ptr->next;
-    }
-    return (target);
+	ptr = *stack_a;
+	target = ptr;
+	while (ptr)
+	{
+		if (ptr->number < target->number)
+			target = ptr;
+		ptr = ptr->next;
+	}
+	return (target);
 }

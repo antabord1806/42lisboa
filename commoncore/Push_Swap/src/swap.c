@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h""
+#include "../include/push_swap.h"
 
 void	swap(t_stack **head)
 {
-	t_stack		*tmp;
+	t_stack	*tmp;
+
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	tmp = (*head)->next;

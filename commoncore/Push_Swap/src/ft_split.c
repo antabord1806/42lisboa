@@ -85,7 +85,6 @@ static int	ft_str_fill(char **arr_aloc, char const *s, char c)
 	return (1);
 }
 
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	nwords;
@@ -106,16 +105,16 @@ char	**ft_split(char const *s, char c)
 
 /*int main(int ac, char *av[])
 {
-    if (ac == 3)
-    {
-        int i = 0;
-        char **f = ft_split(av[1], av[2][0]);
-        while (f[i])
-        {
-            printf("%s\n", f[i]);
-            i++;
-        }
-        free(f);
-    }
-    return (0);
+	if (ac == 3)
+	{
+		int i = 0;
+		char **f = ft_split(av[1], av[2][0]);
+		while (f[i])
+		{
+			printf("%s\n", f[i]);
+			i++;
+		}
+		free(f);
+	}
+	return (0);
 }*/

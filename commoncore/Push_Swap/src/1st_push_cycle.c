@@ -12,40 +12,11 @@
 
 #include "../include/push_swap.h"
 
-void double_rotation_check(t_stack *node_a, t_stack **stack_a,
-		t_stack **stack_b, int nbr)
+void	double_rotation_check(t_stack **stack_a, t_stack **stack_b)
 {
-	int move_rr;
-	int	move_rrr;
-
-	move_rr = 0;
-	move_rrr = 0;
-	if (nbr == 0)
-	{
-		if (node_a->idx >= lst_size(stack_a) / 2 && node_a->target->idx >= lst_size(stack_b) / 2)
-		{
-			if ((lst_size(stack_a) - node_a->idx) < lst_size(stack_b) - node_a->target->idx)
-				move_rrr = lst_size(stack_a) - node_a->idx;
-			else
-				move_rrr = lst_size(stack_b) - node_a->target->idx;
-		}
-		else if (node_a->idx < lst_size(stack_a) / 2 && node_a->target->idx < lst_size(stack_b) / 2)
-		{
-			if (node_a->idx < node_a->target->idx)
-				move_rr = node_a->idx;
-			else
-				move_rr = node_a->target->idx;
-		}
-		node_a->rr = move_rr;
-		node_a->rrr = move_rrr;
-	}
-	else
-	{
-		check_if_3(stack_a);
-		push_loop_2(stack_a, stack_b);
-	}
+	check_if_3(stack_a);
+	push_loop_2(stack_a, stack_b);
 }
-
 
 void	move_cheapest_node(t_stack *node_a, t_stack **stack_a,
 		t_stack **stack_b)
@@ -77,9 +48,9 @@ void	move_cheapest_node(t_stack *node_a, t_stack **stack_a,
 
 t_stack	*find_target_in_b(t_stack *node_a, t_stack **stack_b)
 {
-	t_stack *ptr;
-	t_stack *target;
-	int diff;
+	t_stack	*ptr;
+	t_stack	*target;
+	int		diff;
 
 	target = NULL;
 	ptr = *stack_b;
@@ -98,18 +69,17 @@ t_stack	*find_target_in_b(t_stack *node_a, t_stack **stack_b)
 
 int	cost_analysis(t_stack *ptr, t_stack **stack_a, t_stack **stack_b)
 {
-	int cost_a;
-	int cost_b;
+	int	cost_a;
+	int	cost_b;
 
 	if (!ptr || !ptr->target)
-		return 0;
-	double_rotation_check(ptr, stack_a, stack_b, 0);
+		return (0);
 	if (ptr->idx >= lst_size(stack_a) / 2)
-		cost_a = lst_size(stack_a) - (ptr->rrr) - (ptr->idx);
+		cost_a = lst_size(stack_a) - (ptr->idx);
 	else
 		cost_a = ptr->idx - ptr->rr;
 	if (ptr->target->idx >= lst_size(stack_b) / 2)
-		cost_b = lst_size(stack_b) - ptr->target->rrr - (ptr->target->idx);
+		cost_b = lst_size(stack_b) - (ptr->target->idx);
 	else
 		cost_b = ptr->target->idx - ptr->target->rr;
 	return (cost_a + cost_b);
@@ -117,13 +87,13 @@ int	cost_analysis(t_stack *ptr, t_stack **stack_a, t_stack **stack_b)
 
 void	push_loop_1(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *ptr;
-	t_stack *node_a;
-	int cheapest;
-	int	cost;
+	t_stack	*ptr;
+	t_stack	*node_a;
+	int		cheapest;
+	int		cost;
 
-	ptr = *stack_a;
-	move_target_to_top_or_push_b(ptr, stack_a, stack_b, 0);
+	//printf("about to pushx2 \n");
+	move_target_to_top_or_push_b(*stack_a, stack_a, stack_b, 0);
 	while (*stack_a && !check_if_3(stack_a))
 	{
 		node_a = NULL;
@@ -143,5 +113,5 @@ void	push_loop_1(t_stack **stack_a, t_stack **stack_b)
 		if (node_a)
 			move_cheapest_node(node_a, stack_a, stack_b);
 	}
-	double_rotation_check(node_a, stack_a, stack_b, 2);
+	double_rotation_check(stack_a, stack_b);
 }

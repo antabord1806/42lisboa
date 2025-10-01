@@ -14,13 +14,13 @@
 
 void	ft_err(void)
 {
-	fprintf(stderr, "Error\n");
+	//fprintf(stderr, "Error\n");
 	exit(EXIT_FAILURE);
 }
 
 int	is_it_too_big(int nbr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (nbr)
@@ -32,22 +32,25 @@ int	is_it_too_big(int nbr)
 		return (1);
 	return (0);
 }
+
 void	freedom(char **arr)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	if (!arr)
-		return;
+		return ;
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
 }
+
 void	freedom_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
 	if (!stack)
-		return;
+		return ;
 	while (*stack)
 	{
 		temp = (*stack)->next;
