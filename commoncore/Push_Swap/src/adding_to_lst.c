@@ -97,10 +97,11 @@ int	ft_isduplicate(t_stack **stack)
 	}
 	return (1);
 }
+
+
 void	parser(t_stack **stack, char **av)
 {
 	int		i;
-	long	value;
 	t_stack	*new;
 
 	i = 0;
@@ -109,16 +110,15 @@ void	parser(t_stack **stack, char **av)
 		new = malloc(sizeof(t_stack));
 		if (!new)
 			ft_err();
-		value = ft_atol(av[i]);
-		if (value > INT_MAX || value < INT_MIN || is_it_too_big(value))
+		ft_memset(new, 0, sizeof(t_stack));
+		new->number = ft_atol(av[i]);
+		if (new->number > INT_MAX || new->number < INT_MIN || is_it_too_big(new->number))
 		{
 			freedom_stack(stack);
 			free(new);
 			freedom(av);
 			ft_err();
 		}	
-		new->number = value;
-		new->next = NULL;
 		ft_lstadd_back_mod(stack, new);
 		i++;
 	}

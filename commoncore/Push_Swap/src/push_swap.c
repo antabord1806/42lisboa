@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	char	**args;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
@@ -22,18 +21,24 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc <= 1)
 		ft_err();
-	args = join_args(argc, argv);
-	parser(&stack_a, args);
+	argv = join_args(argc, argv);
+	parser(&stack_a, argv);
 	ft_isduplicate(&stack_a);
-	add_index(&stack_a);
+	add_index(&stack_a, &stack_b);
 	if (check_if_sorted(&stack_a, 1) || check_if_3(&stack_a))
 	{
-		freedom(args);
+		freedom(argv);
 		freedom_stack(&stack_a);
 		return (0);
 	}
 	push_loop_1(&stack_a, &stack_b);
-	freedom(args);
+	push_loop_2(&stack_a, &stack_b);
+	/*while (stack_a)
+	{
+		printf("%d\n", stack_a->number);
+		stack_a = stack_a->next;
+	}*/
+	freedom(argv);
 	freedom_stack(&stack_a);
 	return (0);
 }

@@ -15,62 +15,53 @@
 void double_rotation_check(t_stack *node_a, t_stack **stack_a,
 		t_stack **stack_b, int nbr)
 {
-	int move_rr;
-	int	move_rrr;
-
-	move_rr = 0;
-	move_rrr = 0;
 	if (nbr == 0)
 	{
-		if (node_a->idx >= lst_size(stack_a) / 2 && node_a->target->idx >= lst_size(stack_b) / 2)
+		while (node_a->idx >= lst_size(stack_a) / 2 && node_a->target->idx >= lst_size(stack_b) / 2)
 		{
-			if ((lst_size(stack_a) - node_a->idx) < lst_size(stack_b) - node_a->target->idx)
-				move_rrr = lst_size(stack_a) - node_a->idx;
+			rrr(stack_a, stack_b);
+			add_index(stack_a, stack_b);
+			/*if (lst_size(stack_a) - node_a->idx < lst_size(stack_b) - node_a->target->idx)
+				node_a->rrr = lst_size(stack_a) - node_a->idx;
 			else
-				move_rrr = lst_size(stack_b) - node_a->target->idx;
+				node_a->rrr = lst_size(stack_b) - node_a->target->idx;*/
 		}
-		else if (node_a->idx < lst_size(stack_a) / 2 && node_a->target->idx < lst_size(stack_b) / 2)
+		while (node_a->idx < lst_size(stack_a) / 2 && node_a->target->idx < lst_size(stack_b) / 2)
 		{
-			if (node_a->idx < node_a->target->idx)
-				move_rr = node_a->idx;
+			rr(stack_a, stack_b);
+			add_index(stack_a, stack_b);
+			/*if (node_a->idx < node_a->target->idx)
+				node_a->rr = node_a->idx;
 			else
-				move_rr = node_a->target->idx;
+				node_a->rr = node_a->target->idx;*/
 		}
-		node_a->rr = move_rr;
-		node_a->rrr = move_rrr;
-	}
-	else
-	{
-		check_if_3(stack_a);
-		push_loop_2(stack_a, stack_b);
 	}
 }
-
 
 void	move_cheapest_node(t_stack *node_a, t_stack **stack_a,
 		t_stack **stack_b)
 {
+	double_rotation_check(node_a, stack_a, stack_b, 0);
+	/*while (node_a->rr-- != 0)
+		rr(stack_a, stack_b);
+	while (node_a->rrr-- != 0)
+		rrr(stack_a, stack_b);*/
+	add_index(stack_a, stack_b);
 	while ((*stack_a) != node_a)
 	{
-		while (node_a->rr-- > 0)
-			rr(stack_a, stack_b);
-		while (node_a->rrr-- > 0)
-			rrr(stack_a, stack_b);
-		add_index(stack_a);
-		add_index(stack_b);
 		if (node_a->idx >= lst_size(stack_a) / 2)
 			rra(stack_a);
 		else
 			ra(stack_a);
+		add_index(stack_a, stack_b);
 	}
 	while ((*stack_b) != node_a->target)
 	{
-		add_index(stack_a);
-		add_index(stack_b);
 		if (node_a->target->idx >= lst_size(stack_b) / 2)
 			rrb(stack_b);
 		else
 			rb(stack_b);
+		add_index(stack_a, stack_b);
 	}
 	pb(stack_a, stack_b);
 }
@@ -103,15 +94,14 @@ int	cost_analysis(t_stack *ptr, t_stack **stack_a, t_stack **stack_b)
 
 	if (!ptr || !ptr->target)
 		return 0;
-	double_rotation_check(ptr, stack_a, stack_b, 0);
 	if (ptr->idx >= lst_size(stack_a) / 2)
-		cost_a = lst_size(stack_a) - (ptr->rrr) - (ptr->idx);
+		cost_a = lst_size(stack_a) - (ptr->idx);
 	else
-		cost_a = ptr->idx - ptr->rr;
+		cost_a = ptr->idx;
 	if (ptr->target->idx >= lst_size(stack_b) / 2)
-		cost_b = lst_size(stack_b) - ptr->target->rrr - (ptr->target->idx);
+		cost_b = lst_size(stack_b) - (ptr->target->idx);
 	else
-		cost_b = ptr->target->idx - ptr->target->rr;
+		cost_b = ptr->target->idx;
 	return (cost_a + cost_b);
 }
 
@@ -143,5 +133,4 @@ void	push_loop_1(t_stack **stack_a, t_stack **stack_b)
 		if (node_a)
 			move_cheapest_node(node_a, stack_a, stack_b);
 	}
-	double_rotation_check(node_a, stack_a, stack_b, 2);
 }

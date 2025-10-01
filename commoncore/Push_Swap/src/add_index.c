@@ -12,13 +12,21 @@
 
 #include "../include/push_swap.h"
 
-void	add_index(t_stack **stack)
+void	add_index(t_stack **stack_a, t_stack **stack_b)
 {
 	int index;
 	t_stack *curr;
 
 	index = 0;
-	curr = *stack;
+	curr = *stack_a;
+	while (curr)
+	{
+		curr->idx = index;
+		curr = curr->next;
+		index++;
+	}
+	index = 0;
+	curr = *stack_b;
 	while (curr)
 	{
 		curr->idx = index;
@@ -34,8 +42,12 @@ int	check_if_sorted(t_stack **stack, int nbr)
 	tmp = *stack;
 	while (tmp && tmp->next)
 	{
+		//printf("rotating check");
 		if (tmp->number > tmp->next->number && nbr == 0)
+		{
 			rra(stack);
+			add_index(stack, stack);
+		}
 		else if (tmp->number > tmp->next->number && nbr != 0)
 			return (0);
 		tmp = tmp->next;

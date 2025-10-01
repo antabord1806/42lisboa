@@ -36,6 +36,7 @@ int		ft_strlen(const char *str);
 long	ft_atol(char *str);
 char	**ft_strjoin(char **s1, char **s2);
 char	**ft_split(char const *s, char c);
+void	*ft_memset(void *s, int c, size_t n);
 
 //main & arg breakdown
 int		main(int argc, char **argv);
@@ -51,7 +52,7 @@ void	parser(t_stack **stack, char *av[]);
 int		is_it_too_big(int nbr);
 int		ft_isduplicate(t_stack **stack);
 int		ft_isdigit_mod(char **nbr);
-void	add_index(t_stack **stack);
+void	add_index(t_stack **stack_a, t_stack **stack_b);
 
 //processing stack
 int		check_if_sorted(t_stack **stack, int nbr);
@@ -84,5 +85,6 @@ void	move_target_to_top_or_push_b(t_stack *target, t_stack **stack_a, t_stack **
 int		lst_size(t_stack **stack);
 t_stack *no_target_min(t_stack **stack_a);
 t_stack *no_target_max(t_stack **stack_b);
+void finalize_stack_a(t_stack **stack_a);
 
 #endif

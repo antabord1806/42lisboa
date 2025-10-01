@@ -44,8 +44,7 @@ void	stack_is_3(t_stack **stack)
 	}
 	else if (a < b && b > c && a > c)
 		rra(stack);
-	if (check_if_sorted(stack, 1))
-		return ;
+	add_index(stack, stack);
 }
 
 int	check_if_3(t_stack **stack_a)
