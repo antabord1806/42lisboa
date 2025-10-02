@@ -36,13 +36,13 @@ void    free_grid(t_map *map);
     int     is_square(char **lines, int n_lines);
     int     top_bottom_walls(char *st_line, char *lst_line);
     int     e_p_finder(char **lines, int max_y, int max_x);
-    void	flood_fill_st(t_map *map, int x, int y, int height);
+    void	flood_fill_st(t_map **map, int x, int y, int height);
     void	flood_filled(char **copy, int x, int y, int *coins);
     int     coin_count(t_map *map);
     void	print_map(char **grid, int height);
     
     //to_struct
-    t_map   *create_map(char **lines, int n_lines);
+    t_map   *create_map(t_map **map, char **lines, int n_lines);
     t_map	*init_grid(void);
     t_game  *game_init(t_map *map, t_player *player);
     t_player    *player_init();

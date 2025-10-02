@@ -21,6 +21,7 @@ int	move_check(t_game *game, int new_y, int new_x, char key)
 	{
 		
 		ft_puterr("fim do jogo\n");
+	
 		exit(0);
 	}
 	else

@@ -18,6 +18,7 @@ int	top_bottom_walls(char *st_line, char *lst_line)
 	int	i;
 
 	i = 0;
+	printf("top bottom\n");
 	while (st_line[i] && lst_line[i])
 	{
 		if (st_line[i] != '1' || lst_line[i] != '1')

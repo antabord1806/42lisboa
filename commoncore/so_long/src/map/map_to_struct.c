@@ -17,30 +17,33 @@
 #include "../a_structs.h"
 
 
-t_map	*create_map(char **line, int height)
+t_map	*create_map(t_map **map, char **line, int height)
 {
-	t_map *map;
-
-	map = init_grid();
-	if (!map)
-		return (NULL);
-	map->width = ft_strlen(line[0]);
-	map->height = height;
+	ft_memset(map, 0, sizeof(t_map));
 	map->grid = line;
+ 	map->width = ft_strlen(line[0]);
+	map->height = height;
 	if (!is_square(line, height))
 	{
 		ft_puterr("Error: The map is not rectangular\n");
-		return (free_grid(map), NULL);
+		return (NULL);
 	}
 	if (!check_counts(line))
-		return (free_grid(map), NULL);
-	if (!top_bottom_walls(line[0], line[map->height - 1]))
-		return (free_grid(map), NULL);
-	find_p_x(map);
-	find_p_y(map);
+		return (NULL);
+	printf("before top bottom\n");
+/* 	if (!top_bottom_walls(line[0], line[map->height - 1]))
+		return (NULL); */
+	find_p_x(&map);
+	find_p_y(&map);
+	while (height > 0)
+	{
+		printf("%s\n", (*map)->grid[height - 1]);
+		height--;
+	}
 	printf("map created\n");
 	return (map);
 }
+
 int	coin_count(t_map *map)
 {
 	int x;

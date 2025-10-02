@@ -22,16 +22,15 @@ int	main(int argc, char **argv)
 	void	*win;
  
 	map = main_parser(argc, argv);
-	player = player_init();;
+	player = ft_memset(&player, 0, sizeof(t_player));
 	game = game_init(map, player);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, map->width * TILE_SIZE, map->height * TILE_SIZE, "so_long");
 	game->win = win;
 	game->mlx = mlx;
 	key_hooks(win, game);
-	load_images(mlx, map);
-	map_render(game);
-	printf("parsinf\n");
+	//load_images(mlx, map);
+	//map_render(game);
 	mlx_loop(mlx);
 }
 
