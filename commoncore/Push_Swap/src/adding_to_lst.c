@@ -14,11 +14,9 @@
 
 long	ft_atol(char *str)
 {
-	long	result;
-	int		sign;
+	long	result = 0;
+	int		sign = 1;
 
-	result = 0;
-	sign = 1;
 	while ((*str == ' ' || (*str >= 9 && *str <= 13)))
 		str++;
 	if (*str == '-' || *str == '+')
@@ -66,7 +64,7 @@ char	**join_args(int ac, char **av)
 		if (!tmp_str)
 		{
 			freedom(str);
-			//ft_err();
+			ft_err();
 		}
 		str = ft_strjoin(str, tmp_str);
 		if (!str)
@@ -75,8 +73,8 @@ char	**join_args(int ac, char **av)
 	if (!ft_isdigit_mod(str))
 	{
 		freedom(str);
-		//ft_err();
-	}
+		ft_err();
+	}	
 	return (str);
 }
 
@@ -91,8 +89,8 @@ int	ft_isduplicate(t_stack **stack)
 		checking = current->next;
 		while (checking != NULL)
 		{
-/* 			if (current->number == checking->number)
-				ft_err(); */
+			if (current->number == checking->number)
+				ft_err();
 			checking = checking->next;
 		}
 		current = current->next;
@@ -100,10 +98,10 @@ int	ft_isduplicate(t_stack **stack)
 	return (1);
 }
 
+
 void	parser(t_stack **stack, char **av)
 {
 	int		i;
-	long	value;
 	t_stack	*new;
 
 	i = 0;
@@ -112,17 +110,17 @@ void	parser(t_stack **stack, char **av)
 		new = malloc(sizeof(t_stack));
 		if (!new)
 			ft_err();
-		value = ft_atol(av[i]);
-		if (value > INT_MAX || value < INT_MIN || is_it_too_big(value))
+		ft_memset(new, 0, sizeof(t_stack));
+		new->number = ft_atol(av[i]);
+		if (new->number > INT_MAX || new->number < INT_MIN || is_it_too_big(new->number))
 		{
 			freedom_stack(stack);
 			free(new);
 			freedom(av);
-			//ft_err();
-		}
-		new->number = value;
-		new->next = NULL;
+			ft_err();
+		}	
 		ft_lstadd_back_mod(stack, new);
 		i++;
 	}
 }
+
